@@ -15,21 +15,22 @@
     --muted:   #6B7280;
     --text:    #1A1A1A;
 
-    --c-aerobic-bg:   #FFFFFF;  --c-aerobic-bd:   #D1D5DB; --c-aerobic-tx:  #374151;
-    --c-long-bg:      #F0FDF4;  --c-long-bd:      #86EFAC; --c-long-tx:     #166534;
-    --c-mp-bg:        #EFF6FF;  --c-mp-bd:        #93C5FD; --c-mp-tx:       #1D4ED8;
-    --c-workout-bg:   #FFFBEB;  --c-workout-bd:   #FCD34D; --c-workout-tx:  #92400E;
-    --c-recovery-bg:  #F0F9FF;  --c-recovery-bd:  #BAE6FD; --c-recovery-tx: #0369A1;
-    --c-rest-bg:      #F9FAFB;  --c-rest-bd:      #E5E7EB; --c-rest-tx:     #9CA3AF;
-    --c-race-bg:      #F0FDF4;  --c-race-bd:      #16A34A; --c-race-tx:     #14532D;
-    --c-marathon-bg:  #FEFCE8;  --c-marathon-bd:  #C8960C; --c-marathon-tx: #78350F;
-    --c-treadmill-bg: #FAF5FF;  --c-treadmill-bd: #C4B5FD; --c-treadmill-tx:#5B21B6;
+    --c-aerobic-bg:    #FFFFFF;   --c-aerobic-bd:    #D1D5DB;  --c-aerobic-tx:    #374151;
+    --c-long-bg:       #F0FDF4;   --c-long-bd:       #86EFAC;  --c-long-tx:       #166534;
+    --c-mp-bg:         #EFF6FF;   --c-mp-bd:         #93C5FD;  --c-mp-tx:         #1D4ED8;
+    --c-workout-bg:    #FFFBEB;   --c-workout-bd:    #FCD34D;  --c-workout-tx:    #92400E;
+    --c-recovery-bg:   #F0F9FF;   --c-recovery-bd:   #BAE6FD;  --c-recovery-tx:   #0369A1;
+    --c-rest-bg:       #F9FAFB;   --c-rest-bd:       #E5E7EB;  --c-rest-tx:       #9CA3AF;
+    --c-race-bg:       #F0FDF4;   --c-race-bd:       #16A34A;  --c-race-tx:       #14532D;
+    --c-marathon-bg:   #FEFCE8;   --c-marathon-bd:   #C8960C;  --c-marathon-tx:   #78350F;
+    --c-treadmill-bg:  #FAF5FF;   --c-treadmill-bd:  #C4B5FD;  --c-treadmill-tx:  #5B21B6;
+    --c-double-bg:     #FFFAF0;   --c-double-bd:     #FCD34D;  --c-double-tx:     #78350F;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); }
 
-  /* ── HERO ─────────────────────────────────────────── */
+  /* HERO */
   .hero {
     background: var(--blue);
     padding: 44px 48px 38px;
@@ -44,7 +45,6 @@
     pointer-events: none;
   }
   .hero-inner { max-width: 1320px; margin: 0 auto; position: relative; z-index: 1; }
-
   .eyebrow {
     font-family: 'DM Mono', monospace;
     font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase;
@@ -56,7 +56,6 @@
     line-height: .9; color: #fff; letter-spacing: .025em; margin-bottom: 22px;
   }
   .hero-title em { color: var(--yellow); font-style: normal; }
-
   .hero-stats { display: flex; gap: 0; flex-wrap: wrap; }
   .hstat {
     padding: 0 28px 0 0; margin-right: 28px;
@@ -69,208 +68,149 @@
     font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase;
     color: rgba(255,255,255,.45);
   }
-  .hstat-val {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 30px; color: #fff; letter-spacing: .04em; line-height: 1.05;
-  }
-  .hstat-val.gold { color: var(--yellow); }
+  .hstat-val { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: #fff; letter-spacing: .04em; line-height: 1.05; }
+  .hstat-val.gold  { color: var(--yellow); }
   .hstat-val.green { color: #4ADE80; }
 
-  /* ── RESULT BANNER ────────────────────────────────── */
+  /* RESULT BANNER */
   .result-banner {
     background: linear-gradient(90deg, #0a3d82 0%, var(--blue) 50%, #0a3d82 100%);
     border-top: 3px solid var(--yellow);
     border-bottom: 3px solid var(--yellow);
     padding: 12px 48px;
   }
-  .result-inner {
-    max-width: 1320px; margin: 0 auto;
-    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
-  }
-  .result-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
-    color: var(--yellow);
-  }
-  .result-time {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 36px; color: #fff; letter-spacing: .04em; line-height: 1;
-  }
-  .result-note {
-    font-size: 13px; color: rgba(255,255,255,.7);
-    font-style: italic;
-  }
-  .result-chip {
+  .result-inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .result-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--yellow); }
+  .result-time  { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: #fff; letter-spacing: .04em; line-height: 1; }
+  .result-note  { font-size: 13px; color: rgba(255,255,255,.7); font-style: italic; }
+  .result-chip  {
     margin-left: auto;
-    background: rgba(255,203,5,.15);
-    border: 1px solid rgba(255,203,5,.4);
-    border-radius: 6px;
-    padding: 5px 14px;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px; letter-spacing: .08em;
-    color: var(--yellow);
+    background: rgba(255,203,5,.15); border: 1px solid rgba(255,203,5,.4);
+    border-radius: 6px; padding: 5px 14px;
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .08em; color: var(--yellow);
   }
 
-  /* ── PACES BAR ────────────────────────────────────── */
+  /* PACES */
   .paces-bar { background: #0a3d82; }
   .paces-inner { max-width: 1320px; margin: 0 auto; display: flex; overflow-x: auto; }
   .pace-cell {
-    flex: 1; min-width: 130px;
-    padding: 12px 18px;
+    flex: 1; min-width: 130px; padding: 12px 18px;
     border-right: 1px solid rgba(255,255,255,.18);
     display: flex; flex-direction: column; gap: 1px;
   }
   .pace-cell:last-child { border-right: none; }
-  .pace-zone {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px; letter-spacing: .17em; text-transform: uppercase;
-    color: rgba(255,255,255,.55);
-  }
-  .pace-val {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px; color: #fff; letter-spacing: .04em; line-height: 1;
-  }
+  .pace-zone { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .17em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+  .pace-val  { font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: #fff; letter-spacing: .04em; line-height: 1; }
 
-  /* ── LEGEND ───────────────────────────────────────── */
+  /* LEGEND */
   .legend-bar { background: #072d6e; padding: 8px 48px; }
-  .legend-inner {
-    max-width: 1320px; margin: 0 auto;
-    display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
-  }
-  .leg {
-    display: flex; align-items: center; gap: 5px;
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; letter-spacing: .06em;
-    color: rgba(255,255,255,.6);
-  }
+  .legend-inner { max-width: 1320px; margin: 0 auto; display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .leg { display: flex; align-items: center; gap: 5px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .06em; color: rgba(255,255,255,.6); }
   .leg-sw { width: 13px; height: 13px; border-radius: 3px; flex-shrink: 0; }
 
-  /* ── MAIN ─────────────────────────────────────────── */
+  /* MAIN */
   .main { max-width: 1320px; margin: 0 auto; padding: 28px 48px 64px; }
 
-  /* ── TABLE ────────────────────────────────────────── */
+  /* TABLE */
   table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 12px; }
-
   thead th {
-    font-family: 'DM Mono', monospace;
-    font-size: 9.5px; letter-spacing: .15em; text-transform: uppercase;
-    color: var(--muted); font-weight: 500;
-    padding: 7px 8px 9px;
-    border-bottom: 2px solid var(--border);
-    background: var(--bg);
-    text-align: center;
-    position: sticky; top: 0; z-index: 20;
+    font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--muted); font-weight: 500; padding: 7px 8px 9px;
+    border-bottom: 2px solid var(--border); background: var(--bg);
+    text-align: center; position: sticky; top: 0; z-index: 20;
   }
   thead th:first-child { text-align: left; }
 
   tr.phase-div td {
-    background: var(--blue);
-    color: rgba(255,255,255,.75);
-    font-family: 'DM Mono', monospace;
-    font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase;
+    background: var(--blue); color: rgba(255,255,255,.75);
+    font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase;
     padding: 5px 10px; font-weight: 500;
   }
-
-  tr.week-row td {
-    padding: 7px 6px;
-    border-bottom: 1px solid var(--border);
-    vertical-align: top;
-  }
+  tr.week-row td { padding: 7px 6px; border-bottom: 1px solid var(--border); vertical-align: top; }
   tr.week-row:hover td { background: rgba(0,0,0,.012); }
 
-  /* ── WEEK META ────────────────────────────────────── */
+  /* WEEK META */
   .wmeta { min-width: 88px; }
-  .wnum {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 30px; color: var(--blue); line-height: 1; display: block;
-  }
-  .wdate {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px; letter-spacing: .06em; color: var(--muted);
-    display: block; margin-top: 1px;
-  }
+  .wnum  { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: var(--blue); line-height: 1; display: block; }
+  .wdate { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .06em; color: var(--muted); display: block; margin-top: 1px; }
   .wbadge {
     display: inline-block; margin-top: 4px;
-    font-family: 'DM Mono', monospace;
-    font-size: 8.5px; letter-spacing: .09em; text-transform: uppercase;
+    font-family: 'DM Mono', monospace; font-size: 8.5px; letter-spacing: .09em; text-transform: uppercase;
     padding: 2px 5px; border-radius: 3px; font-weight: 600;
   }
   .b-peak     { background: #FEE2E2; color: #B91C1C; }
   .b-recovery { background: #EFF6FF; color: #1D4ED8; }
   .b-taper    { background: #F5F3FF; color: #6D28D9; }
 
-  /* ── DAY CARD ─────────────────────────────────────── */
+  /* DAY CARD */
   .dc {
-    border-radius: 7px;
-    padding: 7px 5px 6px;
-    min-height: 72px;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 3px;
+    border-radius: 7px; padding: 7px 5px 6px; min-height: 72px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
     transition: transform .1s, box-shadow .1s;
   }
   .dc:hover { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,.09); }
-
-  .dc-date { font-family: 'DM Mono', monospace; font-size: 8.5px; letter-spacing: .05em; opacity: .5; }
-  .dc-name { font-size: 11px; font-weight: 600; text-align: center; line-height: 1.25; }
-  .dc-sub  { font-size: 9.5px; font-weight: 400; opacity: .75; text-align: center; }
+  .dc-date  { font-family: 'DM Mono', monospace; font-size: 8.5px; letter-spacing: .05em; opacity: .5; }
+  .dc-name  { font-size: 11px; font-weight: 600; text-align: center; line-height: 1.25; }
   .dc-miles { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: .03em; line-height: 1; }
   .dc-miles.zero { opacity: .3; font-size: 16px; }
 
-  /* Two-run stacked display */
+  /* Double day stacked runs */
   .dc-runs { display: flex; flex-direction: column; align-items: center; gap: 1px; width: 100%; }
-  .dc-run {
-    display: flex; align-items: center; justify-content: space-between;
-    width: 100%; padding: 1px 4px;
-    font-size: 10px;
-  }
+  .dc-run  { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 1px 4px; }
   .dc-run-name { font-weight: 500; flex: 1; text-align: left; font-size: 9.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .dc-run-mi   { font-family: 'Bebas Neue', sans-serif; font-size: 14px; margin-left: 4px; }
 
-  /* type colours */
-  .t-aerobic   { background: var(--c-aerobic-bg);  border: 1px solid var(--c-aerobic-bd);  color: var(--c-aerobic-tx); }
-  .t-long      { background: var(--c-long-bg);      border: 1px solid var(--c-long-bd);      color: var(--c-long-tx); }
-  .t-mp        { background: var(--c-mp-bg);        border: 1.5px solid var(--c-mp-bd);      color: var(--c-mp-tx); }
-  .t-workout   { background: var(--c-workout-bg);   border: 1px solid var(--c-workout-bd);   color: var(--c-workout-tx); }
-  .t-recovery  { background: var(--c-recovery-bg);  border: 1px solid var(--c-recovery-bd);  color: var(--c-recovery-tx); }
-  .t-rest      { background: var(--c-rest-bg);      border: 1px solid var(--c-rest-bd);      color: var(--c-rest-tx); }
-  .t-race      { background: var(--c-race-bg);      border: 2px solid var(--c-race-bd);      color: var(--c-race-tx); }
-  .t-marathon  { background: var(--c-marathon-bg);  border: 2px solid var(--c-marathon-bd);  color: var(--c-marathon-tx); }
-  .t-treadmill { background: var(--c-treadmill-bg); border: 1px solid var(--c-treadmill-bd); color: var(--c-treadmill-tx); }
-  .t-double    { background: #FFFAF0; border: 1px solid #FCD34D; color: #78350F; }
+  /* Friday triple on Mar 13 */
+  .dc-sub { font-size: 9.5px; opacity: .75; text-align: center; }
 
-  /* ── TOTAL BADGE ──────────────────────────────────── */
+  /* Type colours */
+  .t-aerobic   { background: var(--c-aerobic-bg);   border: 1px solid var(--c-aerobic-bd);   color: var(--c-aerobic-tx); }
+  .t-long      { background: var(--c-long-bg);       border: 1px solid var(--c-long-bd);       color: var(--c-long-tx); }
+  .t-mp        { background: var(--c-mp-bg);         border: 1.5px solid var(--c-mp-bd);       color: var(--c-mp-tx); }
+  .t-workout   { background: var(--c-workout-bg);    border: 1px solid var(--c-workout-bd);    color: var(--c-workout-tx); }
+  .t-recovery  { background: var(--c-recovery-bg);   border: 1px solid var(--c-recovery-bd);   color: var(--c-recovery-tx); }
+  .t-rest      { background: var(--c-rest-bg);       border: 1px solid var(--c-rest-bd);       color: var(--c-rest-tx); }
+  .t-race      { background: var(--c-race-bg);       border: 2px solid var(--c-race-bd);       color: var(--c-race-tx); }
+  .t-marathon  { background: var(--c-marathon-bg);   border: 2px solid var(--c-marathon-bd);   color: var(--c-marathon-tx); }
+  .t-treadmill { background: var(--c-treadmill-bg);  border: 1px solid var(--c-treadmill-bd);  color: var(--c-treadmill-tx); }
+  .t-double    { background: var(--c-double-bg);     border: 1px solid var(--c-double-bd);     color: var(--c-double-tx); }
+
+  /* TOTAL BADGE */
   .tot-cell { text-align: center; }
-  .tot {
-    display: inline-flex; flex-direction: column; align-items: center;
-    padding: 6px 10px; border-radius: 7px;
-    background: var(--blue); color: #fff; min-width: 48px;
-  }
+  .tot { display: inline-flex; flex-direction: column; align-items: center; padding: 6px 10px; border-radius: 7px; background: var(--blue); color: #fff; min-width: 48px; }
   .tot.peak     { background: #B91C1C; }
   .tot.taper    { background: #6D28D9; }
   .tot.recovery { background: #2563EB; }
   .tot-num { font-family: 'Bebas Neue', sans-serif; font-size: 26px; line-height: 1; letter-spacing: .03em; }
   .tot-lbl { font-family: 'DM Mono', monospace; font-size: 7.5px; letter-spacing: .12em; opacity: .65; text-transform: uppercase; }
 
-  /* ── NOTES ────────────────────────────────────────── */
-  .notes {
-    margin-top: 28px;
-    background: var(--blue); border-radius: 10px;
-    padding: 22px 28px; color: rgba(255,255,255,.72);
-    font-size: 12.5px; line-height: 1.75;
-  }
+  /* NOTES */
+  .notes { margin-top: 28px; background: var(--blue); border-radius: 10px; padding: 22px 28px; color: rgba(255,255,255,.72); font-size: 12.5px; line-height: 1.75; }
   .notes strong { color: #fff; }
   .notes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 36px; margin-top: 12px; }
+
+  /* MARATHON RACE ROW */
+  tr.marathon-row td { padding: 0; }
+  .marathon-card {
+    background: var(--c-marathon-bg); border-top: 3px solid var(--c-marathon-bd);
+    padding: 18px 48px; display: flex; align-items: center; gap: 32px;
+  }
+  .mc-wk  { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: var(--gold); min-width: 88px; }
+  .mc-name { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--gold); letter-spacing: .04em; }
+  .mc-date { font-family: 'DM Mono', monospace; font-size: 11px; color: #78350F; opacity: .8; margin-top: 2px; }
+  .mc-time { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: #78350F; letter-spacing: .04em; line-height: 1; margin-left: auto; }
+  .mc-time-lbl { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .15em; text-transform: uppercase; color: #78350F; opacity: .7; }
 
   @media (max-width: 860px) {
     .hero, .legend-bar, .main, .result-banner { padding-left: 16px; padding-right: 16px; }
     .paces-inner { padding: 0 16px; }
     .notes-grid { grid-template-columns: 1fr; }
+    .marathon-card { padding: 16px; gap: 16px; }
   }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
     <div class="eyebrow">18-Week Training Plan · Boston, MA · April 20, 2026</div>
@@ -278,24 +218,22 @@
     <div class="hero-stats">
       <div class="hstat"><span class="hstat-lbl">Goal Time</span><span class="hstat-val gold">2:57:00</span></div>
       <div class="hstat"><span class="hstat-lbl">Marathon Pace</span><span class="hstat-val">6:45 / mi</span></div>
-      <div class="hstat"><span class="hstat-lbl">Training Start</span><span class="hstat-val">Dec 15</span></div>
-      <div class="hstat"><span class="hstat-lbl">Peak Week</span><span class="hstat-val">74 mi</span></div>
-      <div class="hstat"><span class="hstat-lbl">Actual Result</span><span class="hstat-val green">3:01:55</span></div>
+      <div class="hstat"><span class="hstat-lbl">Plan Start</span><span class="hstat-val">Dec 15</span></div>
+      <div class="hstat"><span class="hstat-lbl">Peak Week</span><span class="hstat-val">72 mi</span></div>
+      <div class="hstat"><span class="hstat-lbl">Result</span><span class="hstat-val green">3:01:55</span></div>
     </div>
   </div>
 </div>
 
-<!-- RESULT BANNER -->
 <div class="result-banner">
   <div class="result-inner">
     <span class="result-label">Race Result</span>
     <span class="result-time">3:01:55</span>
-    <span class="result-note">Boston Marathon, April 20, 2026 · Hopkinton to Boylston Street</span>
+    <span class="result-note">Boston Marathon · April 20, 2026 · Hopkinton to Boylston Street</span>
     <span class="result-chip">26.4 mi official</span>
   </div>
 </div>
 
-<!-- PACES -->
 <div class="paces-bar">
   <div class="paces-inner">
     <div class="pace-cell"><span class="pace-zone">Marathon Pace</span><span class="pace-val">6:45</span></div>
@@ -307,13 +245,12 @@
   </div>
 </div>
 
-<!-- LEGEND -->
 <div class="legend-bar">
   <div class="legend-inner">
     <div class="leg"><div class="leg-sw" style="background:#F0FDF4;border:1.5px solid #86EFAC;"></div>Long Run</div>
     <div class="leg"><div class="leg-sw" style="background:#EFF6FF;border:1.5px solid #93C5FD;"></div>Long + MP Segments</div>
     <div class="leg"><div class="leg-sw" style="background:#FFFBEB;border:1px solid #FCD34D;"></div>Workout / Intervals</div>
-    <div class="leg"><div class="leg-sw" style="background:#F0F9FF;border:1px solid #BAE6FD;"></div>Recovery Run</div>
+    <div class="leg"><div class="leg-sw" style="background:#F0F9FF;border:1px solid #BAE6FD;"></div>Recovery</div>
     <div class="leg"><div class="leg-sw" style="background:#fff;border:1px solid #D1D5DB;"></div>Aerobic</div>
     <div class="leg"><div class="leg-sw" style="background:#FAF5FF;border:1px solid #C4B5FD;"></div>Treadmill</div>
     <div class="leg"><div class="leg-sw" style="background:#FFFAF0;border:1px solid #FCD34D;"></div>Double Day</div>
@@ -323,19 +260,12 @@
   </div>
 </div>
 
-<!-- TABLE -->
 <div class="main">
 <table>
 <thead>
   <tr>
     <th style="width:88px;text-align:left;">Week</th>
-    <th>Monday</th>
-    <th>Tuesday</th>
-    <th>Wednesday</th>
-    <th>Thursday</th>
-    <th>Friday</th>
-    <th>Saturday</th>
-    <th>Sunday</th>
+    <th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
     <th style="width:58px;">Total</th>
   </tr>
 </thead>
@@ -345,15 +275,47 @@
 <div class="notes">
   <strong>Training Notes</strong>
   <div class="notes-grid">
-    <div><strong>Monday Long Runs</strong> — A distinctive feature of this plan: most weeks open with a substantial Monday long run of 14+ miles, followed by the week's other quality work. This front-loaded structure was used consistently throughout the build.</div>
-    <div><strong>Key Workouts</strong> — Dec 27: Long 16 w/ 8@MP · Jan 31: 20-mile long workout · Feb 27: 24.6-mile mega long run · Mar 18: East Hartford MCR 1K intervals. These marked the sharpest quality sessions of the block.</div>
-    <div><strong>Double Days</strong> (gold border) — Several weeks included two-run days, often a morning workout plus an afternoon shakeout or vice versa. Total mileage for those days is shown combined.</div>
-    <div><strong>PBR 8K (Mar 13)</strong> — Mid-plan race used as a fitness check and speed workout. Boston Marathon finishing time: <strong>3:01:55</strong> on Apr 20, 2026.</div>
+    <div><strong>Monday Long Runs</strong> — A defining pattern: most weeks open with a 14-mi Monday long run. This front-loaded structure was applied consistently through the build, using Sunday as a true rest day.</div>
+    <div><strong>Key Workouts</strong> — Dec 27: Long 16 w/ 8@MP · Jan 31: 20-mi long workout (type 1334575) · Feb 27: 24.6-mi mega long run · Mar 18: East Hartford MCR 1K intervals.</div>
+    <div><strong>Double Days</strong> (gold border) — Several weeks included two-a-day runs; combined mileage and individual splits are both shown. Treadmill sessions (purple) reflect Minnesota winter conditions.</div>
+    <div><strong>PBR 8K (Mar 13)</strong> — Mid-plan tune-up race used as a fitness check. Boston result: <strong>3:01:55</strong> on Apr 20, 2026 — a new PR on one of the world's most demanding courses.</div>
   </div>
 </div>
 </div>
 
 <script>
+// Plan start: Monday Dec 15, 2025 (Week 18)
+// Boston Marathon: Monday April 20, 2026 (day after Week 1 ends Apr 19)
+const PLAN_START = new Date(2025, 11, 15); // Dec 15
+
+function mondayOf(wk) {
+  const d = new Date(PLAN_START);
+  d.setDate(PLAN_START.getDate() + (18 - wk) * 7);
+  return d;
+}
+function fmt(d) { return d.toLocaleDateString('en-US', { month:'short', day:'numeric' }); }
+
+const PHASES = {
+  18: 'Base Building',
+  14: 'Peak Training',
+  6:  'Recovery + Sharpening',
+  4:  'Final Peak Block',
+  2:  'Taper',
+};
+
+function weekBadge(wk) {
+  if ([14,10,8,4].includes(wk)) return '<span class="wbadge b-peak">Peak</span>';
+  if ([6].includes(wk))         return '<span class="wbadge b-recovery">Recovery</span>';
+  if ([2,1].includes(wk))       return '<span class="wbadge b-taper">Taper</span>';
+  return '';
+}
+function totClass(wk) {
+  if ([14,10,8,4].includes(wk)) return 'tot peak';
+  if ([2,1].includes(wk))       return 'tot taper';
+  if ([6].includes(wk))         return 'tot recovery';
+  return 'tot';
+}
+  
 // ─── PLAN DATA ────────────────────────────────────────────────────────────────
 // Sourced directly from Runalyze activity export
 // Plan start: Monday Dec 15, 2025 (Week 18)
@@ -593,67 +555,25 @@ const PLAN = [
   ],
 ];
 
-// ─── DATES ───────────────────────────────────────────────────────────────────
-const PLAN_START = new Date(2025, 11, 15); // Dec 15, 2025 (Month 0-indexed)
-function mondayOf(wk) {
-  const d = new Date(PLAN_START);
-  d.setDate(PLAN_START.getDate() + (18 - wk) * 7);
-  return d;
-}
-function fmt(d) { return d.toLocaleDateString('en-US', {month:'short', day:'numeric'}); }
-
-// ─── PHASE DIVIDERS ───────────────────────────────────────────────────────────
-const PHASES = {
-  18: 'Base Building',
-  14: 'Peak Training',
-  6:  'Recovery + Sharpening',
-  4:  'Final Peak Block',
-  2:  'Taper',
-};
-
-// ─── WEEK BADGE ───────────────────────────────────────────────────────────────
-function weekBadge(wk) {
-  if ([14, 10, 8, 4].includes(wk)) return '<span class="wbadge b-peak">Peak</span>';
-  if ([6].includes(wk)) return '<span class="wbadge b-recovery">Recovery</span>';
-  if ([2, 1].includes(wk)) return '<span class="wbadge b-taper">Taper</span>';
-  return '';
-}
-
-// ─── TOTAL BADGE ──────────────────────────────────────────────────────────────
-function totClass(wk) {
-  if ([14, 10, 8, 4].includes(wk)) return 'tot peak';
-  if ([2, 1].includes(wk)) return 'tot taper';
-  if ([6].includes(wk)) return 'tot recovery';
-  return 'tot';
-}
-
-// ─── RENDER DAY CARD ─────────────────────────────────────────────────────────
-function renderCard(day, dateStr) {
-  if (day.double && day.runs) {
-    // Double day - show stacked runs
-    const runRows = day.runs.map(r =>
-      `<div class="dc-run">
-        <span class="dc-run-name">${r.label}</span>
-        <span class="dc-run-mi">${r.miles.toFixed(1)}</span>
-      </div>`
+// Render a day card
+function card(day, dateStr) {
+  if (day.type === 'double') {
+    const rows = day.runs.map(r =>
+      `<div class="dc-run"><span class="dc-run-name">${r.label}</span><span class="dc-run-mi">${r.miles.toFixed(1)}</span></div>`
     ).join('');
     return `<div class="dc t-double">
       <span class="dc-date">${dateStr}</span>
-      <div class="dc-runs">${runRows}</div>
+      <div class="dc-runs">${rows}</div>
       <span class="dc-miles">${day.miles.toFixed(1)}</span>
     </div>`;
   }
-
-  const miStr = day.miles === 0 ? '—' : (day.miles % 1 !== 0 ? day.miles.toFixed(1) : day.miles.toString());
+  const miStr   = day.miles === 0 ? '—' : (day.miles % 1 ? day.miles.toFixed(1) : String(day.miles));
   const miClass = day.miles === 0 ? 'dc-miles zero' : 'dc-miles';
-
-  // Split label if it has a ·
-  let nameHTML = day.label;
+  let nameHTML  = day.label;
   if (day.label.includes('·')) {
-    const parts = day.label.split('·');
-    nameHTML = parts[0].trim() + '<br><span style="font-size:10px;opacity:.85;">' + parts[1].trim() + '</span>';
+    const [a, b] = day.label.split('·');
+    nameHTML = a.trim() + `<br><span style="font-size:10px;opacity:.85;">${b.trim()}</span>`;
   }
-
   return `<div class="dc t-${day.type}">
     <span class="dc-date">${dateStr}</span>
     <span class="dc-name">${nameHTML}</span>
@@ -661,7 +581,6 @@ function renderCard(day, dateStr) {
   </div>`;
 }
 
-// ─── BUILD TABLE ─────────────────────────────────────────────────────────────
 const tbody = document.getElementById('tbody');
 let lastPhase = -1;
 
@@ -681,14 +600,6 @@ PLAN.forEach(entry => {
   const tr = document.createElement('tr');
   tr.className = 'week-row';
 
-  // Week meta
-  const meta = `<td class="wmeta">
-    <span class="wnum">${wk === 1 && days[0].type === 'marathon' ? '★' : 'W' + wk}</span>
-    <span class="wdate">${fmt(monday)}</span>
-    ${weekBadge(wk)}
-  </td>`;
-
-  // Days
   let dayCells = '';
   let total = 0;
   for (let d = 0; d < 7; d++) {
@@ -696,21 +607,43 @@ PLAN.forEach(entry => {
     dayD.setDate(monday.getDate() + d);
     const day = days[d];
     total += day.miles;
-    dayCells += `<td>${renderCard(day, fmt(dayD))}</td>`;
+    dayCells += `<td>${card(day, fmt(dayD))}</td>`;
   }
 
-  // Total
-  const totStr = total % 1 !== 0 ? total.toFixed(1) : total.toString();
-  const totCell = `<td class="tot-cell">
-    <div class="${totClass(wk)}">
-      <span class="tot-num">${totStr}</span>
-      <span class="tot-lbl">mi</span>
-    </div>
-  </td>`;
-
-  tr.innerHTML = meta + dayCells + totCell;
+  const totStr = total % 1 ? total.toFixed(1) : String(total);
+  tr.innerHTML = `
+    <td class="wmeta">
+      <span class="wnum">W${wk}</span>
+      <span class="wdate">${fmt(monday)}</span>
+      ${weekBadge(wk)}
+    </td>
+    ${dayCells}
+    <td class="tot-cell">
+      <div class="${totClass(wk)}">
+        <span class="tot-num">${totStr}</span>
+        <span class="tot-lbl">mi</span>
+      </div>
+    </td>`;
   tbody.appendChild(tr);
 });
+
+// Marathon row
+const mrow = document.createElement('tr');
+mrow.className = 'marathon-row';
+mrow.innerHTML = `<td colspan="9">
+  <div class="marathon-card">
+    <div>
+      <div class="mc-wk">★ Race Day</div>
+      <div class="mc-name">Boston Marathon</div>
+      <div class="mc-date">Monday, April 20, 2026 · Hopkinton to Boylston Street · 26.4 miles</div>
+    </div>
+    <div style="margin-left:auto;text-align:right;">
+      <div class="mc-time-lbl">Finishing Time</div>
+      <div class="mc-time">3:01:55</div>
+    </div>
+  </div>
+</td>`;
+tbody.appendChild(mrow);
 </script>
 </body>
 </html>
