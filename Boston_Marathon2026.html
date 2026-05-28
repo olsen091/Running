@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 Chicago Marathon — Training Plan</title>
+<title>2026 Boston Marathon — Training Plan</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -282,11 +282,11 @@
     <div class="eyebrow">18-Week Training Plan · Chicago, IL · October 11 2026</div>
     <div class="hero-title">2026&nbsp;<em>Chicago</em><br>Marathon</div>
     <div class="hero-stats">
-      <div class="hstat"><span class="hstat-lbl">Goal Time</span><span class="hstat-val gold">2:55:00</span></div>
-      <div class="hstat"><span class="hstat-lbl">Marathon Pace</span><span class="hstat-val">6:41 / mi</span></div>
+      <div class="hstat"><span class="hstat-lbl">Goal Time</span><span class="hstat-val gold">2:57:00</span></div>
+      <div class="hstat"><span class="hstat-lbl">Marathon Pace</span><span class="hstat-val">6:45 / mi</span></div>
       <div class="hstat"><span class="hstat-lbl">Personal Best</span><span class="hstat-val">3:00:25</span></div>
-      <div class="hstat"><span class="hstat-lbl">Peak Week</span><span class="hstat-val">71 mi</span></div>
-      <div class="hstat"><span class="hstat-lbl">Age Group</span><span class="hstat-val">46</span></div>
+      <div class="hstat"><span class="hstat-lbl">Peak Week</span><span class="hstat-val">72 mi</span></div>
+      <div class="hstat"><span class="hstat-lbl">Age </span><span class="hstat-val">45</span></div>
     </div>
   </div>
 </div>
@@ -294,11 +294,11 @@
 <!-- PACES -->
 <div class="paces-bar">
   <div class="paces-inner">
-    <div class="pace-cell"><span class="pace-zone">Marathon Pace</span><span class="pace-val">6:41</span></div>
-    <div class="pace-cell"><span class="pace-zone">Tempo / LT</span><span class="pace-val">6:17–6:29</span></div>
-    <div class="pace-cell"><span class="pace-zone">Aerobic</span><span class="pace-val">7:21–7:49</span></div>
-    <div class="pace-cell"><span class="pace-zone">Long Run</span><span class="pace-val">7:41–8:21</span></div>
-    <div class="pace-cell"><span class="pace-zone">Recovery</span><span class="pace-val">8:21–9:01</span></div>
+    <div class="pace-cell"><span class="pace-zone">Marathon Pace</span><span class="pace-val">6:45</span></div>
+    <div class="pace-cell"><span class="pace-zone">Tempo / LT</span><span class="pace-val">6:15–6:30</span></div>
+    <div class="pace-cell"><span class="pace-zone">Aerobic</span><span class="pace-val">7:20–7:50</span></div>
+    <div class="pace-cell"><span class="pace-zone">Long Run</span><span class="pace-val">7:40–8:20</span></div>
+    <div class="pace-cell"><span class="pace-zone">Recovery</span><span class="pace-val">8:20–9:30</span></div>
     <div class="pace-cell"><span class="pace-zone">VO₂max</span><span class="pace-val">5:53–6:09</span></div>
   </div>
 </div>
@@ -344,7 +344,7 @@
   <div class="notes-grid">
     <div><strong>Strides (●)</strong> — 6–8 × 100 m accelerations tacked onto the end of easy runs. Controlled build to 5-K effort with full recovery. Keeps legs sharp without meaningful fatigue.</div>
     <div><strong>Wednesday Workouts</strong> — Follow the Mill City Running Fall Marathon training plan for the week's primary quality session.</div>
-    <div><strong>MP Long Runs</strong> (highlighted blue) — Easy-pace miles bookending the marked MP segment. Jun 19: 8@MP · Jul 11: 10@MP · Aug 8 (Sat, Wk 9): 12@MP · Sep 5: 14@MP. Runs at 7:41–8:21 outside the MP window.</div>
+    <div><strong>MP Long Runs</strong> (highlighted blue) — Easy-pace miles bookending the marked MP segment. Runs at 7:40–8:20 outside the MP window.</div>
     <div><strong>Taper (3 Weeks)</strong> — Volume drops sharply; intensity stays. One workout + one moderate long run each week through Week 1. The hay is in the barn.</div>
   </div>
 </div>
@@ -357,7 +357,7 @@
 // Each entry: [weekNum, phase, [workouts Mon-Sun], [miles Mon-Sun], [strides Mon-Sun]]
 // phase strings trigger section dividers and badge styles
 
-const MARATHON = new Date(2026, 9, 11); // Oct 11 2026
+const MARATHON = new Date(2026, 4, 20); // April 20 2026
 function mondayOf(wk) {
   const d = new Date(MARATHON);
   d.setDate(d.getDate() - 6 - wk * 7);  // Monday of week 0 = Oct 5
@@ -379,59 +379,59 @@ const PHASES = {
 const PLAN = [
   // wk, [workouts], [miles], [strides]
 
-  [17,['Aerobic','Long','Workout','Recovery','Recovery','Long',''],
-      [12,9,10,6,5,15,0],[false,false,false,false,false,false,false]],
+  [17,['Aerobic','Long','Aerobic','Rest','Recovery','Long',''],
+      [10,14,10,0,5,9,0],[false,false,false,false,false,false,false]],
 
-  [16,['Aerobic','Aerobic','Workout','Recovery','Long 8@MP','Spectate',''],
-      [13,9,9,5,16,10,0],[false,false,false,false,false,false,false]],
+  [16,['Rest','Aerobic','Workout','Recovery','Long 8@MP','Spectate',''],
+      [0,6,6,12,6,15,0],[false,false,false,false,false,false,false]],
 
-  [15,['Aerobic','Recovery','Aerobic','Recovery','Recovery','Long',''],
-      [14,4,5,5,5,14,0],[false,false,false,false,false,false,false]],
+  [15,['Long','Recovery','Aerobic','Recovery','Recovery','Long',''],
+      [14,8,6,10,4,18,0],[false,false,false,false,false,false,false]],
 
-  [14,['Aerobic','Aerobic','Aerobic','Aerobic','Travel','Race','Long'],
-      [5,5,5,5,0,6,18],[false,false,false,false,false,false,false]],
+  [14,['Long','Aerobic','Workout','Aerobic','Recovery','Long 2x3@MP','Long'],
+      [14,7,7,10,6,6,18],[false,false,false,false,false,false,false]],
 
-  [13,['Aerobic','Long','Workout','Aerobic','Recovery','Long 10@MP',''],
-      [9,15,6,11,5,18,0],[false,false,false,false,false,false,false]],
+  [13,['Long','Aerobic','Workout','Aerobic','Recovery','Long 2x4@MP',''],
+      [14,6,7,12,4,23,0],[false,false,false,false,false,false,false]],
 
-  [12,['Long','Aerobic','Workout','Recovery','Recovery','Rest','Raspberry'],
-      [12,9,9,5,5,0,15],[false,false,false,false,false,false,true]],
+  [12,['Long','Aerobic','Workout','Recovery','Recovery','Long','Rest'],
+      [14,8,6,6,5,15,0],[false,false,false,false,false,false,true]],
 
-  [11,['Aerobic','Long','Workout','Recovery','Aerobic','Long','rest'],
-      [10,15,8,10,7,21,0],[false,false,false,false,false,false,false]],
+  [11,['Long','Aerobic','Workout','Recovery','Aerobic','Long 2x5@MP','rest'],
+      [14,7,9,12,4,20,0],[false,false,false,false,false,false,false]],
 
   [10,['Long','Recovery','Workout','Recovery','Recovery','Long','rest'],
-      [15,7,12,7,7,21,0],[false,false,false,false,false,false,false]],
+      [14,8,12,12,4,20,0],[false,false,false,false,false,false,false]],
 
-  [9,['Long','Recovery','Workout','Recovery','Recovery','Long 12@MP','rest'],
-     [15,7,10,7,7,19,0],[false,false,false,false,false,false,false]],
+  [9,['Long','Recovery','Workout','Recovery','Recovery','Long 2x5@MP','rest'],
+     [14,8,13,8,7,22,0],[false,false,false,false,false,false,false]],
 
-  [8,['Aerobic','Recovery','Workout','Aerobic','Recovery','Waupaca Triathlon','Rest'],
-     [11,7,9,9,7,15,0],[false,false,false,false,false,false,false]],
+  [8,['Long','Recovery','Workout','Aerobic','Recovery','Long','Recovery'],
+     [14,7,7,8,3,21,3],[false,false,false,false,false,false,false]],
 
-  [7,['Long','Recovery','Workout','Recovery','Recovery','2 Mile XC + Long','Rest'],
-     [15,7,12,7,7,22,0],[false,false,false,false,false,false,true]],
+  [7,['Long','Recovery','Workout','Recovery','Long2x6@MP','Recovery','Rest'],
+     [14,8,12,5,24,6,0],[false,false,false,false,false,false,true]],
 
-  [6,['Long','Recovery','Workout','Recovery','Twilight?','Long','Rest'],
-     [11,7,11,5,12,17,0],[false,false,false,false,true,false,false]],
+  [6,['Long','Recovery','Workout','Recovery','Recovery','Long','Rest'],
+     [14,12,8,9,7,15,0],[false,false,false,false,true,false,false]],
 
-  [5,['Long','Aerobic','Workout','Recovery','Recovery','Long 14@MP','Rest'],
-     [15,10,12,7,6,20,0],[false,false,false,false,false,false,false]],
+  [5,['Aerobic','Aerobic','Workout','Recovery','PBR 8k','Long','Rest'],
+     [7,8,10,7,10,15,0],[false,false,false,false,false,false,false]],
 
-  [4,['Long','Recovery','Workout','Recovery','Recovery','Shakeout','CoL'],
-     [10,9,10,5,7,5,17],[false,false,false,false,false,false,true]],
+  [4,['Long','Recovery','Workout','Rest','Recovery','Long 2x6@MP','Recovery'],
+     [14,8,10,0,5,21,8],[false,false,false,false,false,false,true]],
 
-  [3,['Long','Recovery','Workout','Aerobic','Recovery','Long','Rest'],
-     [15,7,12,9,7,21,0],[false,false,false,false,false,false,true]],
+  [3,['Long','Recovery','Workout','Aerobic','Recovery','Long 2x7@MP','Rest'],
+     [14,8,10,12,5,22,0],[false,false,false,false,false,false,true]],
 
-  [2,['Aerobic','Aerobic','Workout','Recovery','Recovery','Long','Rest'],
-     [10,8,11,7,5,17,0],[false,false,false,false,false,false,false]],
+  [2,['Long','Aerobic','Workout','Recovery','Recovery','Long','Rest'],
+     [14,9,9,8,5,17,0],[false,false,false,false,false,false,false]],
 
-  [1,['Recovery','Recovery','Workout','Travelers 5k','Recovery','Long',''],
-     [7,5,9,7,4,13,0],[false,false,false,false,false,false,false]],
+  [1,['Recovery','Recovery','Workout','Travelers 5k','Recovery','Long','Goldy's Run'],
+     [9,4,10,8,7,13,3],[false,false,false,false,false,false,false]],
 
-  [0,['Recovery','Recovery','Workout','Recovery','Recovery 5','Rest','Marathon'],
-     [6,4,6,5,2,0,26.2],[false,false,false,false,false,false,false]],
+  [0,['Recovery','Recovery','Workout','Recovery','Recovery 5','Rest','Shakeout'],
+     [7,5,9,3,4,0,3],[false,false,false,false,false,false,false]],
 ];
 
 // ─── TYPE CLASSIFIER ─────────────────────────────────────────────────────────
@@ -505,8 +505,8 @@ PLAN.forEach(([wk, workouts, miles, strides]) => {
     const label = workouts[d];
     const type = classify(label);
     const STRIDE_DATES = new Set([
-      'Jun 16','Jun 24','Jul 14','Jul 24','Aug 7','Aug 14',
-      'Aug 27','Sep 3','Sep 10','Sep 22','Sep 28','Oct 8'
+      'Jan 5','Jan 12','Feb 2','Feb 9','Feb 16','Mar 2',
+      'Mar 16','Mar 23','Mar 30','Apr 6','Apr 13'
     ]);
     const stride = STRIDE_DATES.has(dateStr);
     total += mi;
