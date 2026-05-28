@@ -1,0 +1,81 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marathon Training Plans</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f5f5f5;
+  margin:0;
+  padding:40px;
+}
+
+h1{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+  max-width:1000px;
+  margin:0 auto;
+}
+
+.card{
+  background:white;
+  border-radius:12px;
+  padding:24px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.card h2{
+  margin-top:0;
+}
+
+.button{
+  display:inline-block;
+  margin-top:16px;
+  padding:10px 16px;
+  background:#00304E;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Marathon Training Plans</h1>
+
+<div class="grid">
+
+  <div class="card">
+    <h2>Chicago Marathon 2026</h2>
+    <p>18-week sub-3 marathon build focused on endurance and marathon pace work.</p>
+    <a class="button" href="chicago-2026.html">View Plan</a>
+  </div>
+
+  <div class="card">
+    <h2>Boston Marathon 2027</h2>
+    <p>Hill-focused marathon preparation for Boston.</p>
+    <a class="button" href="boston-2027.html">View Plan</a>
+  </div>
+
+  <div class="card">
+    <h2>Half Marathon PR Plan</h2>
+    <p>12-week progression emphasizing lactate threshold and speed.</p>
+    <a class="button" href="half-marathon.html">View Plan</a>
+  </div>
+
+</div>
+
+</body>
+</html>
+```
