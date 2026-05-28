@@ -357,7 +357,7 @@
 // Each entry: [weekNum, phase, [workouts Mon-Sun], [miles Mon-Sun], [strides Mon-Sun]]
 // phase strings trigger section dividers and badge styles
 
-const MARATHON = new Date(2026, 4, 19); // April 20 2026
+const MARATHON = new Date(2026, 3, 19); // April 20 2026
 function mondayOf(wk) {
   const d = new Date(MARATHON);
   d.setDate(d.getDate() - 6 - wk * 7);  // Monday of week 0 = Apr 13
