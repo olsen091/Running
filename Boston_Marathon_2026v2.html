@@ -275,17 +275,15 @@
 <div class="notes">
   <strong>Training Notes</strong>
   <div class="notes-grid">
-    <div><strong>Monday Long Runs</strong> — A defining pattern: most weeks open with a 14-mi Monday long run. This front-loaded structure was applied consistently through the build, using Sunday as a true rest day.</div>
-    <div><strong>Key Workouts</strong> — Dec 27: Long 16 w/ 8@MP · Jan 31: 20-mi long workout (type 1334575) · Feb 27: 24.6-mi mega long run · Mar 18: East Hartford MCR 1K intervals.</div>
-    <div><strong>Double Days</strong> (gold border) — Several weeks included two-a-day runs; combined mileage and individual splits are both shown. Treadmill sessions (purple) reflect Minnesota winter conditions.</div>
-    <div><strong>PBR 8K (Mar 13)</strong> — Mid-plan tune-up race used as a fitness check. Boston result: <strong>3:01:55</strong> on Apr 20, 2026 — a new PR on one of the world's most demanding courses.</div>
+    <div><strong>Monday Long Runs</strong> — A distinctive feature of this plan: most weeks open with a substantial Monday long run of 14+ miles, followed by the week's other quality work. This front-loaded structure was applied consistently through the build.</div>
+    <div><strong>Key Workouts</strong> — Dec 27: Long 16 w/ 8@MP · Jan 31: 20-mile long workout · Feb 27: 24.6-mile mega long run · Mar 18: East Hartford MCR 1K intervals. These marked the sharpest fitness peaks.</div>
+    <div><strong>Double Days</strong> (gold border) — Several weeks included two-run days, often a morning workout plus an afternoon shakeout or vice versa. Total mileage for those days is shown combined.</div>
+    <div><strong>PBR 8K (Mar 13)</strong> — Mid-plan race used as a fitness check and speed workout. Boston Marathon finishing time: <strong>3:01:55</strong> on Apr 20, 2026.</div>
   </div>
 </div>
 </div>
 
 <script>
-// Plan start: Monday Dec 15, 2025 (Week 18)
-// Boston Marathon: Monday April 20, 2026 (day after Week 1 ends Apr 19)
 const PLAN_START = new Date(2025, 11, 15); // Dec 15
 
 function mondayOf(wk) {
@@ -316,10 +314,7 @@ function totClass(wk) {
   return 'tot';
 }
 
-// Each week: [wkNum, phase, day0..day6]
-// day: { type, label, miles } or { type:'double', label, miles, runs:[{label,miles,type},...] }
 const PLAN = [
-  // ── Week 18: Dec 15–21 ───────────────────────────────────────────────────
   [18, 'BASE',
    {type:'aerobic',   label:'St Paul',              miles:9.1},
    {type:'long',      label:'St Paul',              miles:14.2},
@@ -330,7 +325,6 @@ const PLAN = [
    {type:'aerobic',   label:'Bay Lake',             miles:8.6},
   ],
 
-  // ── Week 17: Dec 22–28 ───────────────────────────────────────────────────
   [17, '',
    {type:'rest',      label:'Rest',                 miles:0},
    {type:'aerobic',   label:'Bay Lake',             miles:6.1},
@@ -344,7 +338,6 @@ const PLAN = [
    {type:'rest',      label:'Rest',                 miles:0},
   ],
 
-  // ── Week 16: Dec 29 – Jan 4 ──────────────────────────────────────────────
   [16, '',
    {type:'long',      label:'St Paul',              miles:14.2},
    {type:'aerobic',   label:'Shoreview',            miles:8.0},
@@ -355,7 +348,6 @@ const PLAN = [
    {type:'rest',      label:'Rest',                 miles:0},
   ],
 
-  // ── Week 15: Jan 5–11 ────────────────────────────────────────────────────
   [15, '',
    {type:'long',      label:'St Paul',              miles:14.0},
    {type:'aerobic',   label:'St Paul',              miles:7.1},
@@ -369,7 +361,6 @@ const PLAN = [
    {type:'rest',      label:'Rest',                 miles:0},
   ],
 
-  // ── Week 14: Jan 12–18 ───────────────────────────────────────────────────
   [14, 'PEAK',
    {type:'long',      label:'St Paul',              miles:14.0},
    {type:'aerobic',   label:'Shoreview',            miles:6.2},
@@ -380,7 +371,6 @@ const PLAN = [
    {type:'rest',      label:'Rest',                 miles:0},
   ],
 
-  // ── Week 13: Jan 19–25 ───────────────────────────────────────────────────
   [13, '',
    {type:'long',      label:'St Paul',              miles:14.1},
    {type:'aerobic',   label:'St Paul',              miles:8.0},
@@ -391,18 +381,16 @@ const PLAN = [
    {type:'rest',      label:'Rest',                 miles:0},
   ],
 
-  // ── Week 12: Jan 26 – Feb 1 ──────────────────────────────────────────────
   [12, '',
    {type:'long',      label:'St Paul',              miles:14.4},
    {type:'aerobic',   label:'Minneapolis',          miles:7.1},
    {type:'treadmill', label:'Indoor',               miles:8.9},
    {type:'aerobic',   label:'St Paul',              miles:11.2},
    {type:'aerobic',   label:'Minneapolis',          miles:4.3},
-   {type:'workout',   label:'LR Workout',           miles:20.1},
+   {type:'workout',   label:'Minneapolis · LR Workout', miles:20.1},
    {type:'rest',      label:'Rest',                 miles:0},
   ],
 
-  // ── Week 11: Feb 2–8 ─────────────────────────────────────────────────────
   [11, '',
    {type:'long',      label:'St Paul',              miles:14.3},
    {type:'aerobic',   label:'Minneapolis',          miles:8.3},
@@ -416,7 +404,6 @@ const PLAN = [
    {type:'rest',      label:'Rest',                 miles:0},
   ],
 
-  // ── Week 10: Feb 9–15 ────────────────────────────────────────────────────
   [10, 'PEAK',
    {type:'long',      label:'St Paul',              miles:14.5},
    {type:'aerobic',   label:'Minneapolis',          miles:8.2},
@@ -430,7 +417,6 @@ const PLAN = [
    {type:'rest',      label:'Rest',                 miles:0},
   ],
 
-  // ── Week 9: Feb 16–22 ────────────────────────────────────────────────────
   [9, '',
    {type:'long',      label:'St Paul',              miles:14.7},
    {type:'aerobic',   label:'St Paul',              miles:7.1},
@@ -441,7 +427,6 @@ const PLAN = [
    {type:'recovery',  label:'Shoreview',            miles:3.0},
   ],
 
-  // ── Week 8: Feb 23 – Mar 1 ───────────────────────────────────────────────
   [8, 'PEAK',
    {type:'long',      label:'St Paul',              miles:14.1},
    {type:'aerobic',   label:'Minneapolis',          miles:8.5},
@@ -455,7 +440,6 @@ const PLAN = [
    {type:'rest',      label:'Rest',                 miles:0},
   ],
 
-  // ── Week 7: Mar 2–8 ──────────────────────────────────────────────────────
   [7, '',
    {type:'long',      label:'St Paul',              miles:14.1},
    {type:'aerobic',   label:'Minneapolis',          miles:11.8},
@@ -466,18 +450,16 @@ const PLAN = [
    {type:'rest',      label:'Rest',                 miles:0},
   ],
 
-  // ── Week 6: Mar 9–15 ─────────────────────────────────────────────────────
   [6, 'RECOVERY',
    {type:'recovery',  label:'St Paul',              miles:6.4},
    {type:'aerobic',   label:'St Paul',              miles:8.1},
    {type:'aerobic',   label:'Minneapolis',          miles:10.0},
    {type:'aerobic',   label:'Minneapolis',          miles:6.8},
-   {type:'race',      label:'PBR 8K · +shakeout',  miles:9.0},
+   {type:'race',      label:'PBR 8K',               miles:5.0},
    {type:'long',      label:'Minneapolis',          miles:15.6},
    {type:'rest',      label:'Rest',                 miles:0},
   ],
 
-  // ── Week 5: Mar 16–22 ────────────────────────────────────────────────────
   [5, '',
    {type:'double',    label:'St Paul',              miles:14.6, runs:[
      {label:'St Paul', miles:12.1, type:'long'},
@@ -491,7 +473,6 @@ const PLAN = [
    {type:'aerobic',   label:'Shoreview',            miles:8.0},
   ],
 
-  // ── Week 4: Mar 23–29 ────────────────────────────────────────────────────
   [4, 'PEAK',
    {type:'long',      label:'St Paul',              miles:14.1},
    {type:'aerobic',   label:'Minneapolis',          miles:9.4},
@@ -502,7 +483,6 @@ const PLAN = [
    {type:'rest',      label:'Rest',                 miles:0},
   ],
 
-  // ── Week 3: Mar 30 – Apr 5 ───────────────────────────────────────────────
   [3, '',
    {type:'long',      label:'St Paul',              miles:14.3},
    {type:'aerobic',   label:'Minneapolis',          miles:8.8},
@@ -513,7 +493,6 @@ const PLAN = [
    {type:'rest',      label:'Rest',                 miles:0},
   ],
 
-  // ── Week 2: Apr 6–12 ─────────────────────────────────────────────────────
   [2, 'TAPER',
    {type:'aerobic',   label:'St Paul',              miles:10.1},
    {type:'aerobic',   label:'Minneapolis',          miles:4.4},
@@ -524,7 +503,6 @@ const PLAN = [
    {type:'recovery',  label:'Minneapolis',          miles:3.1},
   ],
 
-  // ── Week 1: Apr 13–19 ────────────────────────────────────────────────────
   [1, '',
    {type:'aerobic',   label:'St Paul',              miles:7.1},
    {type:'recovery',  label:'Minneapolis',          miles:4.6},
@@ -536,7 +514,6 @@ const PLAN = [
   ],
 ];
 
-// Render a day card
 function card(day, dateStr) {
   if (day.type === 'double') {
     const rows = day.runs.map(r =>
@@ -569,7 +546,6 @@ PLAN.forEach(entry => {
   const [wk, phase, ...days] = entry;
   const monday = mondayOf(wk);
 
-  // Phase divider
   if (PHASES[wk] !== undefined && wk !== lastPhase) {
     const div = document.createElement('tr');
     div.className = 'phase-div';
@@ -608,7 +584,6 @@ PLAN.forEach(entry => {
   tbody.appendChild(tr);
 });
 
-// Marathon row
 const mrow = document.createElement('tr');
 mrow.className = 'marathon-row';
 mrow.innerHTML = `<td colspan="9">
