@@ -279,8 +279,8 @@
 <!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
-    <div class="eyebrow">18-Week Training Plan · Chicago, IL · October 11 2026</div>
-    <div class="hero-title">2026&nbsp;<em>Chicago</em><br>Marathon</div>
+    <div class="eyebrow">18-Week Training Plan · Boston, MA · April 20 2026</div>
+    <div class="hero-title">2026&nbsp;<em>Boston</em><br>Marathon</div>
     <div class="hero-stats">
       <div class="hstat"><span class="hstat-lbl">Goal Time</span><span class="hstat-val gold">2:57:00</span></div>
       <div class="hstat"><span class="hstat-lbl">Marathon Pace</span><span class="hstat-val">6:45 / mi</span></div>
@@ -357,10 +357,10 @@
 // Each entry: [weekNum, phase, [workouts Mon-Sun], [miles Mon-Sun], [strides Mon-Sun]]
 // phase strings trigger section dividers and badge styles
 
-const MARATHON = new Date(2026, 4, 20); // April 20 2026
+const MARATHON = new Date(2026, 4, 19); // April 20 2026
 function mondayOf(wk) {
   const d = new Date(MARATHON);
-  d.setDate(d.getDate() - 6 - wk * 7);  // Monday of week 0 = Oct 5
+  d.setDate(d.getDate() - 6 - wk * 7);  // Monday of week 0 = Apr 13
   return d;
 }
 function fmt(d) { return d.toLocaleDateString('en-US',{month:'short',day:'numeric'}); }
