@@ -597,7 +597,7 @@ const PLAN = [
 const PLAN_START = new Date(2025, 11, 15); // Dec 22, 2025 (Month 0-indexed)
 function mondayOf(wk) {
   const d = new Date(PLAN_START);
-  d.setDate(PLAN_START.getDate() + (18 - wk) * 7);
+  d.setDate(PLAN_START.getDate() + (19 - wk) * 7);
   return d;
 }
 function fmt(d) { return d.toLocaleDateString('en-US', {month:'short', day:'numeric'}); }
