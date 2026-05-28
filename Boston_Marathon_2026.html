@@ -278,7 +278,7 @@
     <div class="hero-stats">
       <div class="hstat"><span class="hstat-lbl">Goal Time</span><span class="hstat-val gold">2:57:00</span></div>
       <div class="hstat"><span class="hstat-lbl">Marathon Pace</span><span class="hstat-val">6:45 / mi</span></div>
-      <div class="hstat"><span class="hstat-lbl">Training Start</span><span class="hstat-val">Dec 22</span></div>
+      <div class="hstat"><span class="hstat-lbl">Training Start</span><span class="hstat-val">Dec 15</span></div>
       <div class="hstat"><span class="hstat-lbl">Peak Week</span><span class="hstat-val">74 mi</span></div>
       <div class="hstat"><span class="hstat-lbl">Actual Result</span><span class="hstat-val green">3:01:55</span></div>
     </div>
@@ -356,7 +356,7 @@
 <script>
 // ─── PLAN DATA ────────────────────────────────────────────────────────────────
 // Sourced directly from Runalyze activity export
-// Plan start: Monday Dec 22, 2025 (Week 18)
+// Plan start: Monday Dec 15, 2025 (Week 18)
 // Boston Marathon: Monday April 20, 2026 (Week 1, Day 1)
 // Each entry: [weekNum, phase, days[0..6]]
 // Each day: { label, miles, type } or { double: true, runs: [{label,miles,type},...] }
@@ -594,10 +594,10 @@ const PLAN = [
 ];
 
 // ─── DATES ───────────────────────────────────────────────────────────────────
-const PLAN_START = new Date(2025, 11, 15); // Dec 22, 2025 (Month 0-indexed)
+const PLAN_START = new Date(2025, 11, 15); // Dec 15, 2025 (Month 0-indexed)
 function mondayOf(wk) {
   const d = new Date(PLAN_START);
-  d.setDate(PLAN_START.getDate() + (19 - wk) * 7);
+  d.setDate(PLAN_START.getDate() + (18 - wk) * 7);
   return d;
 }
 function fmt(d) { return d.toLocaleDateString('en-US', {month:'short', day:'numeric'}); }
@@ -605,25 +605,25 @@ function fmt(d) { return d.toLocaleDateString('en-US', {month:'short', day:'nume
 // ─── PHASE DIVIDERS ───────────────────────────────────────────────────────────
 const PHASES = {
   18: 'Base Building',
-  15: 'Peak Training',
-  7:  'Recovery + Sharpening',
-  5:  'Final Peak Block',
-  3:  'Taper',
+  14: 'Peak Training',
+  6:  'Recovery + Sharpening',
+  4:  'Final Peak Block',
+  2:  'Taper',
 };
 
 // ─── WEEK BADGE ───────────────────────────────────────────────────────────────
 function weekBadge(wk) {
-  if ([15, 11, 9, 5].includes(wk)) return '<span class="wbadge b-peak">Peak</span>';
-  if ([7].includes(wk)) return '<span class="wbadge b-recovery">Recovery</span>';
-  if ([3, 2, 1].includes(wk)) return '<span class="wbadge b-taper">Taper</span>';
+  if ([14, 10, 8, 4].includes(wk)) return '<span class="wbadge b-peak">Peak</span>';
+  if ([6].includes(wk)) return '<span class="wbadge b-recovery">Recovery</span>';
+  if ([2, 1].includes(wk)) return '<span class="wbadge b-taper">Taper</span>';
   return '';
 }
 
 // ─── TOTAL BADGE ──────────────────────────────────────────────────────────────
 function totClass(wk) {
-  if ([15, 11, 9, 5].includes(wk)) return 'tot peak';
-  if ([3, 2, 1].includes(wk)) return 'tot taper';
-  if ([7].includes(wk)) return 'tot recovery';
+  if ([14, 10, 8, 4].includes(wk)) return 'tot peak';
+  if ([2, 1].includes(wk)) return 'tot taper';
+  if ([6].includes(wk)) return 'tot recovery';
   return 'tot';
 }
 
