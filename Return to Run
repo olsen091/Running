@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Return to Run Plan</title>
+
+<style>
+:root{
+    --easy:#d4edda;
+    --cross:#d1ecf1;
+    --long:#ffe5b4;
+    --stride:#e8d7ff;
+    --rest:#f5f5f5;
+    --header:#2c3e50;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    margin:20px;
+    background:#fafafa;
+}
+
+h1,h2{
+    text-align:center;
+}
+
+.note{
+    max-width:1000px;
+    margin:0 auto 20px;
+    background:#fff8dc;
+    padding:15px;
+    border-left:5px solid #f1c40f;
+}
+
+.week{
+    margin-bottom:30px;
+}
+
+.week-header{
+    background:var(--header);
+    color:white;
+    padding:10px;
+    font-weight:bold;
+    border-radius:6px 6px 0 0;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:2px;
+    background:#ccc;
+}
+
+.day-header{
+    background:#34495e;
+    color:white;
+    text-align:center;
+    padding:8px;
+    font-weight:bold;
+}
+
+.day{
+    min-height:90px;
+    padding:10px;
+    cursor:pointer;
+    background:white;
+    transition:.2s;
+}
+
+.day:hover{
+    transform:scale(1.02);
+}
+
+.easy{background:var(--easy);}
+.cross{background:var(--cross);}
+.long{background:var(--long);}
+.stride{background:var(--stride);}
+.rest{background:var(--rest);}
+
+.day-title{
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.mileage{
+    font-size:.9em;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    z-index:999;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.65);
+}
+
+.modal-content{
+    background:white;
+    max-width:700px;
+    margin:5% auto;
+    padding:25px;
+    border-radius:8px;
+}
+
+.close{
+    float:right;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.legend{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin:20px 0;
+}
+
+.legend div{
+    padding:8px 12px;
+    border-radius:4px;
+}
+
+@media(max-width:768px){
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+    .day-header{
+        display:none;
+    }
+}
+</style>
+</head>
+<body>
+
+<h1>8-Week Return to Running Plan</h1>
+
+<div class="note">
+<strong>Important:</strong> Progress only if pain remains ≤2/10 during runs,
+there is no limping, and swelling does not increase the next day.
+All running should be conversational effort.
+</div>
+
+<div class="legend">
+<div class="easy">Easy Run</div>
+<div class="cross">Bike / Cross Train</div>
+<div class="long">Long Run</div>
+<div class="stride">Strides</div>
+<div class="rest">Rest</div>
+</div>
+
+<div id="calendar"></div>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
+<script>
+
+const weekdays = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+
+const plan = [
+
+{
+week:"Week 1 (8 Miles)",
+total:"8 Miles",
+days:[
+["Bike 40 min","cross","Stationary bike at comfortable aerobic effort for 40 minutes."],
+["2 mi Run/Walk","easy","Walk 5 min. Run 3 min / Walk 1 min repeated until 2 miles. Easy effort only."],
+["Bike 40 min","cross","40 minutes bike plus ankle mobility work."],
+["2 mi Run/Walk","easy","Run 4 min / Walk 1 min. Keep effort conversational."],
+["Rest","rest","Rest day. Light stretching only."],
+["2 mi Run/Walk","easy","Run 5 min / Walk 1 min until 2 miles completed."],
+["2 mi Easy","easy","Continuous running if comfortable. Easy pace only."]
+]
+},
+
+{
+week:"Week 2 (11 Miles)",
+total:"11 Miles",
+days:[
+["Bike 45 min","cross","Steady aerobic ride."],
+["2.5 mi Easy","easy","Continuous running. Comfortable effort."],
+["Bike 40 min","cross","Bike plus ankle strength exercises."],
+["2.5 mi Easy","easy","Conversational pace throughout."],
+["Rest","rest","Recovery day."],
+["3 mi Easy","easy","Smooth relaxed running."],
+["3 mi Easy","easy","Focus on good mechanics."]
+]
+},
+
+{
+week:"Week 3 (14 Miles)",
+total:"14 Miles",
+days:[
+["Bike 45 min","cross","Aerobic bike ride."],
+["3 mi Easy","easy","Easy run."],
+["2 mi Easy + Strength","easy","Run easy then perform calf raises and balance work."],
+["3 mi Easy","easy","Relaxed effort."],
+["Rest","rest","Recovery."],
+["4 mi Long Run","long","Longest run so far. Keep very easy."],
+["2 mi Recovery","easy","Very relaxed pace."]
+]
+},
+
+{
+week:"Week 4 (17 Miles)",
+total:"17 Miles",
+days:[
+["Bike 30 min","cross","Easy spinning."],
+["3 mi Easy","easy","Conversational pace."],
+["3 mi Easy","easy","Relaxed running."],
+["4 mi Easy","easy","Steady easy effort."],
+["Rest","rest","Recovery day."],
+["5 mi Long Run","long","Easy effort throughout."],
+["2 mi Recovery","easy","Keep pace relaxed."]
+]
+},
+
+{
+week:"Week 5 (20 Miles)",
+total:"20 Miles",
+days:[
+["Bike 30 min","cross","Optional easy bike."],
+["4 mi + Strides","stride","Run 4 miles easy. Finish with 4 × 20 sec strides with full walking recovery."],
+["3 mi Easy","easy","Recovery effort."],
+["4 mi Easy","easy","Relaxed pace."],
+["Rest","rest","Recovery."],
+["6 mi Long Run","long","Easy effort, no pushing."],
+["3 mi Recovery","easy","Very easy."]
+]
+},
+
+{
+week:"Week 6 (23 Miles)",
+total:"23 Miles",
+days:[
+["Bike 30 min","cross","Easy spin."],
+["4 mi + Strides","stride","4 miles easy plus 4 × 20 sec strides."],
+["4 mi Easy","easy","Conversational effort."],
+["5 mi Easy","easy","Comfortable pace."],
+["Rest","rest","Recovery."],
+["7 mi Long Run","long","Easy effort."],
+["3 mi Recovery","easy","Very easy pace."]
+]
+},
+
+{
+week:"Week 7 (26 Miles)",
+total:"26 Miles",
+days:[
+["Bike 20 min","cross","Optional recovery spin."],
+["5 mi + Strides","stride","5 miles easy plus 6 × 20 sec strides."],
+["4 mi Easy","easy","Recovery effort."],
+["5 mi Easy","easy","Comfortable running."],
+["Rest","rest","Recovery."],
+["8 mi Long Run","long","Stay relaxed."],
+["4 mi Recovery","easy","Easy effort."]
+]
+},
+
+{
+week:"Week 8 (29 Miles)",
+total:"29 Miles",
+days:[
+["Bike 20 min","cross","Optional recovery ride."],
+["5 mi + Fartlek","stride","5 miles total including 6 × 1 min moderate / 2 min easy."],
+["4 mi Easy","easy","Recovery pace."],
+["6 mi Easy","easy","Comfortable effort."],
+["Rest","rest","Recovery."],
+["9 mi Long Run","long","Longest run of cycle. Easy effort."],
+["5 mi Recovery","easy","Relaxed running."]
+]
+}
+
+];
+
+const calendar = document.getElementById("calendar");
+
+plan.forEach(week => {
+
+let html = `
+<div class="week">
+<div class="week-header">${week.week} • Total: ${week.total}</div>
+<div class="grid">
+`;
+
+weekdays.forEach(day=>{
+html += `<div class="day-header">${day}</div>`;
+});
+
+week.days.forEach(day=>{
+html += `
+<div class="day ${day[1]}" onclick="showModal('${day[0]}', \`${day[2]}\`)">
+<div class="day-title">${day[0]}</div>
+</div>
+`;
+});
+
+html += `</div></div>`;
+calendar.innerHTML += html;
+
+});
+
+function showModal(title,detail){
+document.getElementById("modalBody").innerHTML =
+`<h2>${title}</h2><p>${detail}</p>`;
+document.getElementById("modal").style.display="block";
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+
+window.onclick=function(e){
+const modal=document.getElementById("modal");
+if(e.target===modal){
+modal.style.display="none";
+}
+}
+
+</script>
+
+</body>
+</html>
