@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2025 Medtronic Twin Cities Marathon — Training Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red:   #EA6C0A;
+    --navy:  #1A3D1F;
+    --gold:  #F59E42;
+    --bg:    #F2F5F0;
+    --border:#D8E3D4;
+    --muted: #6B7280;
+    --text:  #1A1A1A;
+
+    --c-aerobic-bg:    #FFFFFF;  --c-aerobic-bd:    #D1D5DB;  --c-aerobic-tx:    #374151;
+    --c-long-bg:       #F0FDF4;  --c-long-bd:       #6EE7A0;  --c-long-tx:       #14532D;
+    --c-mp-bg:         #EFF6FF;  --c-mp-bd:         #93C5FD;  --c-mp-tx:         #1D4ED8;
+    --c-workout-bg:    #FFF7ED;  --c-workout-bd:    #FBB975;  --c-workout-tx:    #7C2D12;
+    --c-recovery-bg:   #F0FDF4;  --c-recovery-bd:   #A7F3C2;  --c-recovery-tx:   #166534;
+    --c-rest-bg:       #F9FAFB;  --c-rest-bd:       #E5E7EB;  --c-rest-tx:       #9CA3AF;
+    --c-race-bg:       #FFF7ED;  --c-race-bd:       #EA6C0A;  --c-race-tx:       #7C2D12;
+    --c-marathon-bg:   #FFFBEB;  --c-marathon-bd:   #F59E42;  --c-marathon-tx:   #78350F;
+    --c-xc-bg:         #F0FDF4;  --c-xc-bd:         #34D399;  --c-xc-tx:         #065F46;
+    --c-double-bg:     #FFF7ED;  --c-double-bd:     #FBB975;  --c-double-tx:     #7C2D12;
+    --c-stride-dot:    #EA6C0A;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 44px 48px 38px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 420px 320px at 92% -10%, rgba(234,108,10,.35) 0%, transparent 65%),
+      radial-gradient(ellipse 340px 260px at 5%  110%, rgba(245,158,66,.16) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1320px; margin: 0 auto; position: relative; z-index: 1; }
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 10px;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7.5vw, 92px);
+    line-height: .9; color: #fff; letter-spacing: .025em; margin-bottom: 22px;
+  }
+  .hero-title em { color: var(--red); font-style: normal; }
+  .hero-stats { display: flex; gap: 0; flex-wrap: wrap; }
+  .hstat {
+    padding: 0 28px 0 0; margin-right: 28px;
+    border-right: 1px solid rgba(255,255,255,.15);
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .hstat:last-child { border-right: none; }
+  .hstat-lbl {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase;
+    color: rgba(255,255,255,.45);
+  }
+  .hstat-val { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: #fff; letter-spacing: .04em; line-height: 1.05; }
+  .hstat-val.gold  { color: var(--gold); }
+  .hstat-val.green { color: #4ADE80; }
+
+  /* RESULT BANNER */
+  .result-banner {
+    background: linear-gradient(90deg, #0e2311 0%, var(--navy) 50%, #0e2311 100%);
+    border-top: 3px solid var(--red);
+    border-bottom: 3px solid var(--red);
+    padding: 12px 48px;
+  }
+  .result-inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .result-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+  .result-time  { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: #fff; letter-spacing: .04em; line-height: 1; }
+  .result-note  { font-size: 13px; color: rgba(255,255,255,.7); font-style: italic; }
+  .result-chip  {
+    margin-left: auto;
+    background: rgba(232,160,32,.15); border: 1px solid rgba(232,160,32,.4);
+    border-radius: 6px; padding: 5px 14px;
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .08em; color: var(--gold);
+  }
+
+  /* PACES */
+  .paces-bar { background: var(--red); }
+  .paces-inner { max-width: 1320px; margin: 0 auto; display: flex; overflow-x: auto; }
+  .pace-cell {
+    flex: 1; min-width: 130px; padding: 13px 18px;
+    border-right: 1px solid rgba(255,255,255,.22);
+    display: flex; flex-direction: column; gap: 1px;
+  }
+  .pace-cell:last-child { border-right: none; }
+  .pace-zone { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .17em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+  .pace-val  { font-family: 'Bebas Neue', sans-serif; font-size: 21px; color: #fff; letter-spacing: .04em; line-height: 1; }
+
+  /* LEGEND */
+  .legend-bar { background: #122916; padding: 8px 48px; }
+  .legend-inner { max-width: 1320px; margin: 0 auto; display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+  .leg { display: flex; align-items: center; gap: 5px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .06em; color: rgba(255,255,255,.65); }
+  .leg-sw  { width: 13px; height: 13px; border-radius: 3px; flex-shrink: 0; }
+  .leg-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c-stride-dot); flex-shrink: 0; }
+
+  /* MAIN */
+  .main { max-width: 1320px; margin: 0 auto; padding: 28px 48px 64px; }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 12px; }
+  thead th {
+    font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--muted); font-weight: 500; padding: 7px 8px 9px;
+    border-bottom: 2px solid var(--border); background: var(--bg);
+    text-align: center; position: sticky; top: 0; z-index: 20;
+  }
+  thead th:first-child { text-align: left; }
+
+  tr.phase-div td {
+    background: var(--navy); color: rgba(255,255,255,.75);
+    font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase;
+    padding: 5px 10px; font-weight: 500;
+  }
+  tr.week-row td { padding: 7px 6px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr.week-row:hover td { background: rgba(0,0,0,.012); }
+
+  /* WEEK META */
+  .wmeta { min-width: 88px; }
+  .wnum  { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: var(--navy); line-height: 1; display: block; }
+  .wdate { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .06em; color: var(--muted); display: block; margin-top: 1px; }
+  .wbadge {
+    display: inline-block; margin-top: 4px;
+    font-family: 'DM Mono', monospace; font-size: 8.5px; letter-spacing: .09em; text-transform: uppercase;
+    padding: 2px 5px; border-radius: 3px; font-weight: 600;
+  }
+  .b-peak     { background: #FEF0E6; color: #C2540A; }
+  .b-recovery { background: #F0FDF4; color: #166534; }
+  .b-taper    { background: #F5F3FF; color: #6D28D9; }
+
+  /* DAY CARD */
+  .dc {
+    border-radius: 7px; padding: 7px 5px 6px; min-height: 72px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+    position: relative;
+    transition: transform .1s, box-shadow .1s;
+  }
+  .dc:hover { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,.09); }
+  .dc-date  { font-family: 'DM Mono', monospace; font-size: 8.5px; letter-spacing: .05em; opacity: .5; }
+  .dc-name  { font-size: 11px; font-weight: 600; text-align: center; line-height: 1.25; }
+  .dc-miles { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: .03em; line-height: 1; }
+  .dc-miles.zero { opacity: .3; font-size: 16px; }
+
+  .stride-pip {
+    position: absolute; top: 5px; right: 5px;
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--c-stride-dot);
+  }
+
+  /* Double/multi day */
+  .dc-runs { display: flex; flex-direction: column; align-items: center; gap: 1px; width: 100%; }
+  .dc-run  { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 1px 4px; }
+  .dc-run-name { font-weight: 500; flex: 1; text-align: left; font-size: 9.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .dc-run-mi   { font-family: 'Bebas Neue', sans-serif; font-size: 14px; margin-left: 4px; }
+
+  /* Type colours */
+  .t-aerobic   { background: var(--c-aerobic-bg);  border: 1px solid var(--c-aerobic-bd);  color: var(--c-aerobic-tx); }
+  .t-long      { background: var(--c-long-bg);      border: 1px solid var(--c-long-bd);      color: var(--c-long-tx); }
+  .t-mp        { background: var(--c-mp-bg);        border: 1.5px solid var(--c-mp-bd);      color: var(--c-mp-tx); }
+  .t-workout   { background: var(--c-workout-bg);   border: 1px solid var(--c-workout-bd);   color: var(--c-workout-tx); }
+  .t-recovery  { background: var(--c-recovery-bg);  border: 1px solid var(--c-recovery-bd);  color: var(--c-recovery-tx); }
+  .t-rest      { background: var(--c-rest-bg);      border: 1px solid var(--c-rest-bd);      color: var(--c-rest-tx); }
+  .t-race      { background: var(--c-race-bg);      border: 2px solid var(--c-race-bd);      color: var(--c-race-tx); }
+  .t-marathon  { background: var(--c-marathon-bg);  border: 2px solid var(--c-marathon-bd);  color: var(--c-marathon-tx); }
+  .t-xc        { background: var(--c-xc-bg);        border: 1.5px solid var(--c-xc-bd);      color: var(--c-xc-tx); }
+  .t-double    { background: var(--c-double-bg);    border: 1px solid var(--c-double-bd);    color: var(--c-double-tx); }
+
+  /* TOTAL BADGE */
+  .tot-cell { text-align: center; }
+  .tot { display: inline-flex; flex-direction: column; align-items: center; padding: 6px 10px; border-radius: 7px; background: var(--navy); color: #fff; min-width: 48px; }
+  .tot.peak     { background: var(--red); }
+  .tot.taper    { background: #6D28D9; }
+  .tot.recovery { background: #2563EB; }
+  .tot-num { font-family: 'Bebas Neue', sans-serif; font-size: 26px; line-height: 1; letter-spacing: .03em; }
+  .tot-lbl { font-family: 'DM Mono', monospace; font-size: 7.5px; letter-spacing: .12em; opacity: .65; text-transform: uppercase; }
+
+  /* MARATHON RESULT ROW */
+  tr.marathon-row td { padding: 0; }
+  .marathon-card {
+    background: var(--c-marathon-bg); border-top: 3px solid var(--gold);
+    padding: 18px 48px; display: flex; align-items: center; gap: 32px;
+  }
+  .mc-wk   { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: var(--gold); min-width: 88px; }
+  .mc-name { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: #92400E; letter-spacing: .04em; }
+  .mc-date { font-family: 'DM Mono', monospace; font-size: 11px; color: #78350F; opacity: .8; margin-top: 2px; }
+  .mc-time { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: #78350F; letter-spacing: .04em; line-height: 1; }
+  .mc-time-lbl { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .15em; text-transform: uppercase; color: #78350F; opacity: .7; }
+
+  /* NOTES */
+  .notes { margin-top: 28px; background: var(--navy); border-radius: 10px; padding: 22px 28px; color: rgba(255,255,255,.72); font-size: 12.5px; line-height: 1.75; }
+  .notes strong { color: #fff; }
+  .notes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 36px; margin-top: 12px; }
+
+  @media (max-width: 860px) {
+    .hero, .legend-bar, .main, .result-banner { padding-left: 16px; padding-right: 16px; }
+    .paces-inner { padding: 0 16px; }
+    .notes-grid { grid-template-columns: 1fr; }
+    .marathon-card { padding: 16px; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">13-Week Training Plan · Minneapolis, MN · October 5, 2025</div>
+    <div class="hero-title">2025 Medtronic<br><em>Twin Cities</em><br>Marathon</div>
+    <div class="hero-stats">
+      <div class="hstat"><span class="hstat-lbl">Goal Time</span><span class="hstat-val gold">2:59:00</span></div>
+      <div class="hstat"><span class="hstat-lbl">Marathon Pace</span><span class="hstat-val">6:50 / mi</span></div>
+      <div class="hstat"><span class="hstat-lbl">Plan Start</span><span class="hstat-val">Jul 7</span></div>
+      <div class="hstat"><span class="hstat-lbl">Peak Week</span><span class="hstat-val">64 mi</span></div>
+      <div class="hstat"><span class="hstat-lbl">Result</span><span class="hstat-val green">3:08:52</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT BANNER -->
+<div class="result-banner">
+  <div class="result-inner">
+    <span class="result-label">Race Result</span>
+    <span class="result-time">3:08:52</span>
+    <span class="result-note">Medtronic Twin Cities Marathon · October 5, 2025 · Minneapolis to St. Paul</span>
+    <span class="result-chip">26.5 mi official</span>
+  </div>
+</div>
+
+<!-- PACES -->
+<div class="paces-bar">
+  <div class="paces-inner">
+    <div class="pace-cell"><span class="pace-zone">Marathon Pace</span><span class="pace-val">6:50</span></div>
+    <div class="pace-cell"><span class="pace-zone">Tempo / LT</span><span class="pace-val">6:25–6:38</span></div>
+    <div class="pace-cell"><span class="pace-zone">Aerobic</span><span class="pace-val">7:31–8:00</span></div>
+    <div class="pace-cell"><span class="pace-zone">Long Run</span><span class="pace-val">7:51–8:32</span></div>
+    <div class="pace-cell"><span class="pace-zone">Recovery</span><span class="pace-val">8:32–9:13</span></div>
+    <div class="pace-cell"><span class="pace-zone">VO₂max</span><span class="pace-val">6:01–6:17</span></div>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend-bar">
+  <div class="legend-inner">
+    <div class="leg"><div class="leg-sw" style="background:#F0FDF4;border:1.5px solid #6EE7A0;"></div>Long Run</div>
+    <div class="leg"><div class="leg-sw" style="background:#FFF7ED;border:1px solid #FBB975;"></div>Workout / Intervals</div>
+    <div class="leg"><div class="leg-sw" style="background:#F0FDF4;border:1px solid #A7F3C2;"></div>Recovery</div>
+    <div class="leg"><div class="leg-sw" style="background:#fff;border:1px solid #D1D5DB;"></div>Aerobic</div>
+    <div class="leg"><div class="leg-sw" style="background:#FFF7ED;border:1px solid #FBB975;"></div>Double Day</div>
+    <div class="leg"><div class="leg-sw" style="background:#F9FAFB;border:1px solid #E5E7EB;"></div>Rest</div>
+    <div class="leg"><div class="leg-sw" style="background:#FFF7ED;border:2px solid #EA6C0A;"></div>Race</div>
+    <div class="leg"><div class="leg-sw" style="background:#FFFBEB;border:2px solid #F59E42;"></div>Marathon</div>
+    <div class="leg"><div class="leg-dot"></div>Strides</div>
+  </div>
+</div>
+
+<!-- TABLE -->
+<div class="main">
+<table>
+<thead>
+  <tr>
+    <th style="width:88px;text-align:left;">Week</th>
+    <th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
+    <th style="width:58px;">Total</th>
+  </tr>
+</thead>
+<tbody id="tbody"></tbody>
+</table>
+
+<div class="notes">
+  <strong>Training Notes</strong>
+  <div class="notes-grid">
+    <div><strong>Strides (●)</strong> — Aug 5 and Aug 11 sessions were labeled with strides in Runalyze. 4–6 × 100m accelerations added after aerobic runs to maintain leg turnover and neuromuscular sharpness.</div>
+    <div><strong>City of Lakes Half (Sep 7)</strong> — Mid-plan tune-up race run as part of a bigger day: warm-up miles, the 13.1-mile race (1:23:29), and a 3-mile cooldown. A strong fitness indicator heading into the final push.</div>
+    <div><strong>Ripcord 1Ks (Sep 17)</strong> — Key interval workout: East Hartford Ripcord 1K repeats, 8.9 miles total. This was the sharpest speed session of the build, two weeks before the key long run week.</div>
+    <div><strong>Hill Sandwich (Jul 9)</strong> — Distinctive early workout mixing hill reps with aerobic miles. Week 13 also included a cross-training day (soccer/football on Jul 13) logged in Runalyze.</div>
+  </div>
+</div>
+</div>
+
+<script>
+// Plan start: Monday Jul 7, 2025 (Week 13)
+// Twin Cities Marathon: Sunday Oct 5, 2025 (Week 1 Sunday)
+const PLAN_START = new Date(2025, 6, 7); // Jul 7
+
+function mondayOf(wk) {
+  const d = new Date(PLAN_START);
+  d.setDate(PLAN_START.getDate() + (13 - wk) * 7);
+  return d;
+}
+function fmt(d) { return d.toLocaleDateString('en-US', { month:'short', day:'numeric' }); }
+
+const PHASES = {
+  13: 'Base Building',
+  10: 'Build Phase',
+  6:  'Peak Training',
+  3:  'Taper',
+};
+
+function weekBadge(wk) {
+  if ([6, 4].includes(wk)) return '<span class="wbadge b-peak">Peak</span>';
+  if ([5].includes(wk))    return '<span class="wbadge b-recovery">Race Week</span>';
+  if ([3,2,1].includes(wk)) return '<span class="wbadge b-taper">Taper</span>';
+  return '';
+}
+function totClass(wk) {
+  if ([6, 4].includes(wk))  return 'tot peak';
+  if ([3,2,1].includes(wk)) return 'tot taper';
+  return 'tot';
+}
+
+// day: { type, label, miles, stride? }
+// double: { type:'double', label, miles, runs:[...] }
+const PLAN = [
+
+  // ── Week 13: Jul 7–13 ──────────────────────────────
+  [13, 'BASE',
+   {type:'aerobic',  label:'St Paul',              miles:7.0},
+   {type:'rest',     label:'Rest',                 miles:0},
+   {type:'double',   label:'Hill Sandwich',        miles:5.2, runs:[
+     {label:'Hill Sandwich', miles:3.8, type:'workout'},
+     {label:'East Hartford', miles:1.4, type:'recovery'},
+   ]},
+   {type:'aerobic',  label:'East Hartford',        miles:8.1},
+   {type:'aerobic',  label:'East Hartford',        miles:4.5},
+   {type:'long',     label:'St Paul',              miles:12.0},
+   {type:'xc',       label:'Soccer / Football',    miles:1.9},
+  ],
+
+  // ── Week 12: Jul 14–20 ─────────────────────────────
+  [12, '',
+   {type:'aerobic',  label:'St Paul',              miles:7.1},
+   {type:'aerobic',  label:'North Oaks',           miles:8.8},
+   {type:'aerobic',  label:'Minneapolis',          miles:8.4},
+   {type:'rest',     label:'Rest',                 miles:0},
+   {type:'long',     label:'Shoreview',            miles:14.0},
+   {type:'rest',     label:'Rest',                 miles:0},
+   {type:'double',   label:'Hopkins',              miles:3.4, runs:[
+     {label:'Hopkins', miles:1.4, type:'recovery'},
+     {label:'Hopkins', miles:1.0, type:'recovery'},
+     {label:'Hopkins', miles:1.0, type:'recovery'},
+   ]},
+  ],
+
+  // ── Week 11: Jul 21–27 ─────────────────────────────
+  [11, '',
+   {type:'long',     label:'St Paul',              miles:11.0},
+   {type:'aerobic',  label:'St Paul',              miles:8.0},
+   {type:'aerobic',  label:'Minneapolis',          miles:7.6},
+   {type:'rest',     label:'Rest',                 miles:0},
+   {type:'aerobic',  label:'Minneapolis',          miles:6.7},
+   {type:'long',     label:'Minneapolis',          miles:16.0},
+   {type:'recovery', label:'Minneapolis',          miles:3.2},
+  ],
+
+  // ── Week 10: Jul 28 – Aug 3 ────────────────────────
+  [10, 'BUILD',
+   {type:'aerobic',  label:'St Paul',              miles:9.0},
+   {type:'aerobic',  label:'Shoreview',            miles:10.0},
+   {type:'aerobic',  label:'Minneapolis',          miles:8.0},
+   {type:'rest',     label:'Rest',                 miles:0},
+   {type:'aerobic',  label:'Minneapolis',          miles:7.5},
+   {type:'long',     label:'Minneapolis',          miles:19.0},
+   {type:'rest',     label:'Rest',                 miles:0},
+  ],
+
+  // ── Week 9: Aug 4–10 ───────────────────────────────
+  [9, '',
+   {type:'aerobic',  label:'St Paul',              miles:7.5, stride:false},
+   {type:'aerobic',  label:'St Paul',              miles:9.0, stride:true},
+   {type:'aerobic',  label:'Minneapolis',          miles:7.2},
+   {type:'rest',     label:'Rest',                 miles:0},
+   {type:'aerobic',  label:'Minneapolis',          miles:6.2},
+   {type:'long',     label:'St Paul',              miles:14.8},
+   {type:'rest',     label:'Rest',                 miles:0},
+  ],
+
+  // ── Week 8: Aug 11–17 ──────────────────────────────
+  [8, '',
+   {type:'aerobic',  label:'Shoreview',            miles:7.7, stride:true},
+   {type:'aerobic',  label:'Shoreview',            miles:10.0},
+   {type:'aerobic',  label:'Minneapolis',          miles:6.0},
+   {type:'rest',     label:'Rest',                 miles:0},
+   {type:'aerobic',  label:'Minneapolis',          miles:5.5},
+   {type:'long',     label:'St Paul',              miles:20.0},
+   {type:'rest',     label:'Rest',                 miles:0},
+  ],
+
+  // ── Week 7: Aug 18–24 ──────────────────────────────
+  [7, '',
+   {type:'aerobic',  label:'Shoreview',            miles:10.4},
+   {type:'aerobic',  label:'St Paul',              miles:12.0},
+   {type:'aerobic',  label:'Minneapolis',          miles:9.4},
+   {type:'rest',     label:'Rest',                 miles:0},
+   {type:'aerobic',  label:'Minneapolis',          miles:5.5},
+   {type:'long',     label:'Minneapolis',          miles:18.0},
+   {type:'rest',     label:'Rest',                 miles:0},
+  ],
+
+  // ── Week 6: Aug 25–31 ──────────────────────────────
+  [6, 'PEAK',
+   {type:'long',     label:'St Paul',              miles:11.7},
+   {type:'long',     label:'St Paul',              miles:14.0},
+   {type:'aerobic',  label:'Minneapolis',          miles:10.8},
+   {type:'rest',     label:'Rest',                 miles:0},
+   {type:'aerobic',  label:'Minneapolis',          miles:7.5},
+   {type:'long',     label:'Plymouth',             miles:20.1},
+   {type:'rest',     label:'Rest',                 miles:0},
+  ],
+
+  // ── Week 5: Sep 1–7 ────────────────────────────────
+  [5, '',
+   {type:'aerobic',  label:'Golden Valley',        miles:10.7},
+   {type:'aerobic',  label:'Shoreview',            miles:7.9, stride:true},
+   {type:'aerobic',  label:'Minneapolis',          miles:9.1},
+   {type:'rest',     label:'Rest',                 miles:0},
+   {type:'aerobic',  label:'Minneapolis',          miles:7.5},
+   {type:'rest',     label:'Rest',                 miles:0},
+   {type:'double',   label:'City of Lakes Half',   miles:17.6, runs:[
+     {label:'Warm-up',            miles:1.3, type:'recovery'},
+     {label:'City of Lakes Half · 1:23:29', miles:13.2, type:'race'},
+     {label:'Cool-down',          miles:3.1, type:'recovery'},
+   ]},
+  ],
+
+  // ── Week 4: Sep 8–14 ───────────────────────────────
+  [4, 'PEAK',
+   {type:'aerobic',  label:'St Paul',              miles:9.2},
+   {type:'aerobic',  label:'St Paul',              miles:12.0},
+   {type:'aerobic',  label:'Minneapolis',          miles:10.6},
+   {type:'rest',     label:'Rest',                 miles:0},
+   {type:'aerobic',  label:'Minneapolis',          miles:7.0},
+   {type:'long',     label:'St Paul',              miles:22.3},
+   {type:'rest',     label:'Rest',                 miles:0},
+  ],
+
+  // ── Week 3: Sep 15–21 ──────────────────────────────
+  [3, 'TAPER',
+   {type:'aerobic',  label:'St Paul',              miles:8.4},
+   {type:'aerobic',  label:'St Paul',              miles:10.0},
+   {type:'workout',  label:'Ripcord 1Ks',          miles:8.9},
+   {type:'aerobic',  label:'East Hartford',        miles:6.3},
+   {type:'rest',     label:'Rest',                 miles:0},
+   {type:'long',     label:'Minneapolis',          miles:15.4},
+   {type:'recovery', label:'Shoreview',            miles:3.2},
+  ],
+
+  // ── Week 2: Sep 22–28 ──────────────────────────────
+  [2, '',
+   {type:'aerobic',  label:'St Paul',              miles:7.0},
+   {type:'aerobic',  label:'St Paul',              miles:7.1},
+   {type:'aerobic',  label:'Minneapolis',          miles:9.1},
+   {type:'double',   label:'St Paul',              miles:7.3, runs:[
+     {label:'St Paul', miles:1.9, type:'recovery'},
+     {label:'St Paul', miles:3.1, type:'aerobic'},
+     {label:'St Paul', miles:2.3, type:'recovery'},
+   ]},
+   {type:'aerobic',  label:'Minneapolis',          miles:3.4},
+   {type:'aerobic',  label:'St Paul',              miles:8.0},
+   {type:'rest',     label:'Rest',                 miles:0},
+  ],
+
+  // ── Week 1: Sep 29 – Oct 5 ─────────────────────────
+  [1, '',
+   {type:'aerobic',  label:'St Paul',              miles:7.1},
+   {type:'aerobic',  label:'St Paul',              miles:5.3},
+   {type:'aerobic',  label:'Minneapolis',          miles:4.6},
+   {type:'rest',     label:'Rest',                 miles:0},
+   {type:'recovery', label:'Minneapolis',          miles:2.4},
+   {type:'rest',     label:'Rest',                 miles:0},
+   {type:'double',   label:'Twin Cities Marathon', miles:27.1, runs:[
+     {label:'Warm-up',          miles:0.6, type:'recovery'},
+     {label:'Twin Cities Marathon', miles:26.5, type:'marathon'},
+   ]},
+  ],
+];
+
+function card(day, dateStr) {
+  const stride = day.stride === true;
+
+  if (day.type === 'double') {
+    const rows = day.runs.map(r =>
+      `<div class="dc-run">
+        <span class="dc-run-name">${r.label}</span>
+        <span class="dc-run-mi">${r.miles.toFixed(1)}</span>
+      </div>`
+    ).join('');
+    // determine dominant type
+    const types = day.runs.map(r => r.type);
+    const dominant = types.includes('race') ? 'race' : types.includes('marathon') ? 'marathon' : types.includes('workout') ? 'workout' : 'double';
+    return `<div class="dc t-${dominant}">
+      <span class="dc-date">${dateStr}</span>
+      <div class="dc-runs">${rows}</div>
+      <span class="dc-miles">${day.miles.toFixed(1)}</span>
+    </div>`;
+  }
+
+  const miStr   = day.miles === 0 ? '—' : (day.miles % 1 ? day.miles.toFixed(1) : String(day.miles));
+  const miClass = day.miles === 0 ? 'dc-miles zero' : 'dc-miles';
+  let nameHTML  = day.label;
+  if (day.label.includes('·')) {
+    const idx = day.label.indexOf('·');
+    nameHTML = day.label.slice(0,idx).trim() + `<br><span style="font-size:9.5px;opacity:.85;">${day.label.slice(idx+1).trim()}</span>`;
+  }
+  return `<div class="dc t-${day.type}">
+    ${stride ? '<div class="stride-pip"></div>' : ''}
+    <span class="dc-date">${dateStr}</span>
+    <span class="dc-name">${nameHTML}</span>
+    <span class="${miClass}">${miStr}</span>
+  </div>`;
+}
+
+const tbody = document.getElementById('tbody');
+let lastPhase = -1;
+
+PLAN.forEach(entry => {
+  const [wk, phase, ...days] = entry;
+  const monday = mondayOf(wk);
+
+  if (PHASES[wk] !== undefined && wk !== lastPhase) {
+    const div = document.createElement('tr');
+    div.className = 'phase-div';
+    div.innerHTML = `<td colspan="9">— ${PHASES[wk]}</td>`;
+    tbody.appendChild(div);
+    lastPhase = wk;
+  }
+
+  const tr = document.createElement('tr');
+  tr.className = 'week-row';
+
+  let dayCells = '';
+  let total = 0;
+  for (let d = 0; d < 7; d++) {
+    const dayD = new Date(monday);
+    dayD.setDate(monday.getDate() + d);
+    const day = days[d];
+    total += day.miles;
+    dayCells += `<td>${card(day, fmt(dayD))}</td>`;
+  }
+
+  const totStr = total % 1 ? total.toFixed(1) : String(Math.round(total));
+  tr.innerHTML = `
+    <td class="wmeta">
+      <span class="wnum">W${wk}</span>
+      <span class="wdate">${fmt(monday)}</span>
+      ${weekBadge(wk)}
+    </td>
+    ${dayCells}
+    <td class="tot-cell">
+      <div class="${totClass(wk)}">
+        <span class="tot-num">${totStr}</span>
+        <span class="tot-lbl">mi</span>
+      </div>
+    </td>`;
+  tbody.appendChild(tr);
+});
+
+// Marathon result row
+const mrow = document.createElement('tr');
+mrow.className = 'marathon-row';
+mrow.innerHTML = `<td colspan="9">
+  <div class="marathon-card">
+    <div>
+      <div class="mc-wk">★ Race Day</div>
+      <div class="mc-name">Medtronic Twin Cities Marathon</div>
+      <div class="mc-date">Sunday, October 5, 2025 · Minneapolis to St. Paul · 26.5 miles</div>
+    </div>
+    <div style="margin-left:auto;text-align:right;">
+      <div class="mc-time-lbl">Finishing Time</div>
+      <div class="mc-time">3:08:52</div>
+    </div>
+  </div>
+</td>`;
+tbody.appendChild(mrow);
+</script>
+</body>
+</html>
