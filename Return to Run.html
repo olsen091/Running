@@ -51,7 +51,10 @@ h1,h2{
     gap:2px;
     background:#ccc;
 }
-
+.weekday{
+    display:none;
+}
+    
 .day-header{
     background:#34495e;
     color:white;
@@ -125,12 +128,45 @@ h1,h2{
     border-radius:4px;
 }
 
+.weekday{
+    font-size:.85rem;
+    color:#555;
+    font-weight:bold;
+    margin-bottom:6px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+}
+
 @media(max-width:768px){
-    .grid{
-        grid-template-columns:repeat(2,1fr);
+
+    .weekday{
+        display:block;
     }
+    
+    .grid{
+        display:flex;
+        flex-direction:column;
+        gap:6px;
+        background:none;
+    }
+
     .day-header{
         display:none;
+    }
+
+    .day{
+        min-height:auto;
+        padding:14px;
+        border-radius:8px;
+        border:1px solid rgba(0,0,0,.08);
+    }
+
+    .week{
+        margin-bottom:20px;
+    }
+
+    .week-header{
+        border-radius:8px;
     }
 }
 </style>
@@ -296,10 +332,11 @@ weekdays.forEach(day=>{
 html += `<div class="day-header">${day}</div>`;
 });
 
-week.days.forEach(day=>{
+week.days.forEach((day,index)=>{
 html += `
 <div class="day ${day[1]}" onclick="showModal('${day[0]}', \`${day[2]}\`)">
-<div class="day-title">${day[0]}</div>
+    <div class="weekday">${weekdays[index]}</div>
+    <div class="day-title">${day[0]}</div>
 </div>
 `;
 });
