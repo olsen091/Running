@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turtleman Triathlon Training Plan 🐢</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #1D9E75;
+    --teal-light: #E1F5EE;
+    --teal-mid: #5DCAA5;
+    --teal-dark: #0F6E56;
+    --teal-deep: #085041;
+    --coral: #D85A30;
+    --coral-light: #FAECE7;
+    --coral-mid: #F0997B;
+    --amber: #BA7517;
+    --amber-light: #FAEEDA;
+    --amber-mid: #FAC775;
+    --blue: #378ADD;
+    --blue-light: #E6F1FB;
+    --blue-mid: #85B7EB;
+    --purple: #7F77DD;
+    --purple-light: #EEEDFE;
+    --green: #3B6D11;
+    --green-light: #EAF3DE;
+    --green-mid: #97C459;
+    --gray-50: #F1EFE8;
+    --gray-100: #D3D1C7;
+    --gray-500: #5F5E5A;
+    --gray-700: #444441;
+    --gray-900: #2C2C2A;
+    --bg: #FAFAF8;
+    --surface: #FFFFFF;
+    --border: rgba(44,44,42,0.12);
+    --border-md: rgba(44,44,42,0.2);
+    --text: #2C2C2A;
+    --text-muted: #5F5E5A;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .hero {
+    background: var(--teal-deep);
+    color: #fff;
+    padding: 2.5rem 1.25rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.03) 40px,
+      rgba(255,255,255,0.03) 80px
+    );
+    pointer-events: none;
+  }
+  .hero-turtle {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+    line-height: 1.15;
+  }
+  .hero-subtitle {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    margin-bottom: 1.25rem;
+  }
+  .race-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .chip {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 100px;
+    padding: 4px 14px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  /* PROGRESS BAR */
+  .progress-bar-wrap {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 1.25rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .progress-label strong {
+    font-size: 0.9rem;
+    color: var(--text);
+    font-weight: 600;
+  }
+  .progress-track {
+    height: 6px;
+    background: var(--gray-50);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--teal);
+    border-radius: 100px;
+    transition: width 0.4s ease;
+  }
+
+  /* MAIN */
+  main {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1.25rem;
+  }
+
+  /* WEEK BLOCK */
+  .week-block {
+    margin-bottom: 1.5rem;
+  }
+  .week-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1.5px solid var(--border);
+  }
+  .week-label {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--text);
+  }
+  .week-dates {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .week-badge {
+    margin-left: auto;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    border: 1px solid;
+    white-space: nowrap;
+  }
+  .badge-trip { background: var(--amber-light); color: var(--amber); border-color: var(--amber-mid); }
+  .badge-italy { background: var(--blue-light); color: var(--blue); border-color: var(--blue-mid); }
+  .badge-race { background: var(--coral-light); color: var(--coral); border-color: var(--coral-mid); }
+  .badge-build { background: var(--teal-light); color: var(--teal-dark); border-color: var(--teal-mid); }
+  .badge-taper { background: var(--purple-light); color: var(--purple); border-color: #AFA9EC; }
+
+  /* DAY CARDS */
+  .days-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .day-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .day-card.rest {
+    background: var(--gray-50);
+    border-style: dashed;
+  }
+  .day-card.trip-day {
+    background: var(--amber-light);
+    border-color: rgba(186,117,23,0.2);
+  }
+  .day-card.race-day {
+    background: var(--coral-light);
+    border-color: rgba(216,90,48,0.3);
+    border-width: 2px;
+  }
+  .day-card.completed {
+    border-color: var(--teal-mid);
+    background: linear-gradient(135deg, var(--teal-light) 0%, #fff 100%);
+  }
+  .day-card.rest.completed {
+    background: var(--teal-light);
+  }
+
+  .day-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+  }
+
+  .day-date-col {
+    flex-shrink: 0;
+    text-align: center;
+    width: 44px;
+  }
+  .day-name {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+  }
+  .day-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: var(--text);
+    margin: 2px 0;
+  }
+  .day-month {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .day-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .workout-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 4px 0;
+  }
+  .workout-row + .workout-row {
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+    padding-top: 8px;
+  }
+
+  .sport-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .workout-text {
+    flex: 1;
+    min-width: 0;
+  }
+  .workout-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .workout-detail {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+    line-height: 1.45;
+  }
+  .sport-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-right: 5px;
+  }
+  .tag-swim { background: var(--blue-light); color: #185FA5; }
+  .tag-bike { background: var(--amber-light); color: #854F0B; }
+  .tag-run  { background: var(--green-light); color: #27500A; }
+  .tag-rest { background: var(--gray-50); color: var(--gray-500); }
+  .tag-race { background: var(--coral-light); color: #993C1D; }
+
+  /* CHECK BUTTON */
+  .check-btn {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--border-md);
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    align-self: flex-start;
+    margin-top: 2px;
+  }
+  .check-btn:hover {
+    border-color: var(--teal);
+    background: var(--teal-light);
+  }
+  .check-btn.checked {
+    border-color: var(--teal);
+    background: var(--teal);
+  }
+  .check-btn svg {
+    width: 14px;
+    height: 14px;
+    stroke: transparent;
+    stroke-width: 2.5;
+    fill: none;
+    transition: stroke 0.1s;
+  }
+  .check-btn.checked svg { stroke: #fff; }
+
+  /* REST / TRIP day text */
+  .rest-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* RACE DAY SPECIAL */
+  .race-day .day-num { color: var(--coral); }
+  .race-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    color: var(--coral);
+    margin-bottom: 2px;
+  }
+
+  /* LEGEND */
+  .legend {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .legend-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .legend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 8px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* NSCA NOTE */
+  .nsca-note {
+    background: var(--blue-light);
+    border: 1px solid rgba(55,138,221,0.2);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+    color: #185FA5;
+    margin-bottom: 1.5rem;
+    line-height: 1.55;
+  }
+  .nsca-note strong { font-weight: 600; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem 1.25rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    margin-top: 1rem;
+  }
+
+  /* Confetti flash on complete */
+  @keyframes pop {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.18); }
+    100% { transform: scale(1); }
+  }
+  .check-btn.just-checked { animation: pop 0.25s ease; }
+
+  @media (min-width: 540px) {
+    .day-inner { padding: 14px 18px; gap: 16px; }
+    .day-date-col { width: 52px; }
+    .day-num { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="hero-turtle">🐢</span>
+  <h1>Turtleman Triathlon<br>Training Plan</h1>
+  <p class="hero-subtitle">June 8 – July 18, 2026 &nbsp;·&nbsp; Sprint Distance</p>
+  <div class="race-chips">
+    <span class="chip">🏊 800m Swim</span>
+    <span class="chip">🚴 12.5mi Bike</span>
+    <span class="chip">🏃 5K Run</span>
+  </div>
+</header>
+
+<div class="progress-bar-wrap">
+  <div class="progress-label">
+    <span>Workouts completed</span>
+    <strong id="progress-text">0 / 0</strong>
+  </div>
+  <div class="progress-track">
+    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+  </div>
+</div>
+
+<main>
+
+  <div class="nsca-note">
+    <strong>🏊 Swim workouts</strong> follow your NSAC (swim club) coached sessions Mon–Thu. The yardage estimates below are typical silver-level volumes — adjust to match your actual coach's sets. During Italy, swim sets are pool-accessible estimates for open or hotel pool use.
+  </div>
+
+  <div class="legend">
+    <div class="legend-title">Legend</div>
+    <div class="legend-grid">
+      <div class="legend-item"><span class="sport-tag tag-swim">Swim</span> NSAC coached</div>
+      <div class="legend-item"><span class="sport-tag tag-bike">Bike</span> Cycling</div>
+      <div class="legend-item"><span class="sport-tag tag-run">Run</span> Running</div>
+      <div class="legend-item">
+        <span style="width:20px;height:20px;border-radius:50%;background:var(--teal);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="10" height="10" viewBox="0 0 10 10" style="stroke:#fff;stroke-width:2.5;fill:none;"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg>
+        </span>
+        Tap to mark done
+      </div>
+    </div>
+  </div>
+
+  <div id="plan"></div>
+
+</main>
+
+<footer>
+  Race day: <strong>July 18, 2026</strong> · Turtleman Triathlon · Sprint Distance<br>
+  <span style="margin-top:4px;display:block;">Train smart. Have fun. You've got this! 🐢</span>
+</footer>
+
+<script>
+const STORAGE_KEY = 'turtleman-2026-v1';
+
+// ─── PLAN DATA ─────────────────────────────────────────────────────────────
+// Types: swim | bike | run | rest | trip | race
+// checkable: true = shows checkbox
+
+const weeks = [
+  {
+    label: 'Week 1', dates: 'Jun 8–13', badge: 'build',
+    days: [
+      { date: 'Jun 8',  dow: 'Mon', workouts: [
+        { type: 'swim', title: 'NSAC Coached Swim', detail: '~2,000–2,200 yds · Warm-up, drill sets, main set, cool-down', checkable: true }
+      ]},
+      { date: 'Jun 9',  dow: 'Tue', workouts: [
+        { type: 'swim', title: 'NSAC Coached Swim', detail: '~2,000–2,200 yds · Focus on efficient stroke technique', checkable: true },
+        { type: 'bike',  title: 'Easy Spin + Brick Run', detail: '25 min easy bike (flat route, low gear) + 10 min easy jog off the bike', checkable: true }
+      ]},
+      { date: 'Jun 10', dow: 'Wed', workouts: [
+        { type: 'swim', title: 'NSAC Coached Swim', detail: '~2,000–2,200 yds · Endurance pace sets', checkable: true }
+      ]},
+      { date: 'Jun 11', dow: 'Thu', workouts: [
+        { type: 'swim', title: 'NSAC Coached Swim', detail: '~2,000–2,200 yds · Speed work & turns', checkable: true },
+        { type: 'run',   title: 'Easy Run', detail: '20 min easy effort (conversational pace) · Focus on form', checkable: true }
+      ]},
+      { date: 'Jun 12', dow: 'Fri', workouts: [
+        { type: 'bike',  title: 'Bike Ride', detail: '35–40 min moderate effort · Practice shifting and cadence control', checkable: true }
+      ]},
+      { date: 'Jun 13', dow: 'Sat', workouts: [
+        { type: 'run',   title: 'Long Run', detail: '30 min easy long run (about 3 miles) · Comfortable conversational effort', checkable: true }
+      ]},
+    ]
+  },
+
+  {
+    label: 'Week 2 – Trip Week', dates: 'Jun 14–20', badge: 'trip',
+    note: '✈️ No bike or pool access. Running only!',
+    days: [
+      { date: 'Jun 14', dow: 'Sun', workouts: [{ type: 'rest', title: 'Travel Day', detail: 'Rest · Stay hydrated on the road!', checkable: false }]},
+      { date: 'Jun 15', dow: 'Mon', workouts: [{ type: 'run', title: 'Easy Run', detail: '20 min easy run · Explore wherever you are! Flat, comfortable effort', checkable: true }]},
+      { date: 'Jun 16', dow: 'Tue', workouts: [{ type: 'rest', title: 'Rest Day', detail: 'Active rest · Walk, stretch, stay loose', checkable: false }]},
+      { date: 'Jun 17', dow: 'Wed', workouts: [{ type: 'run', title: 'Interval Run', detail: '5 min warm-up · 6× (1 min hard / 1 min walk) · 5 min cool-down · ~25 min total', checkable: true }]},
+      { date: 'Jun 18', dow: 'Thu', workouts: [{ type: 'rest', title: 'Rest Day', detail: 'Active rest · Walking is great cross-training', checkable: false }]},
+      { date: 'Jun 19', dow: 'Fri', workouts: [{ type: 'run', title: 'Tempo Run', detail: '5 min easy · 15 min at comfortably hard pace · 5 min easy · ~25 min total', checkable: true }]},
+      { date: 'Jun 20', dow: 'Sat', workouts: [{ type: 'run', title: 'Long Run', detail: '30–35 min easy run · Keep effort light and steady', checkable: true }]},
+    ]
+  },
+
+  {
+    label: 'Week 3 – Italy (No Bike)', dates: 'Jun 21–27', badge: 'italy',
+    note: '🇮🇹 Pool & running only in Italy — no bike. Resume NSAC swim schedule.',
+    days: [
+      { date: 'Jun 21', dow: 'Sun', workouts: [{ type: 'rest', title: 'Travel Day', detail: 'Rest · Long travel day', checkable: false }]},
+      { date: 'Jun 22', dow: 'Mon', workouts: [
+        { type: 'swim', title: 'Vacation Pool Swim', detail: '800–1,000m open water or hotel pool · Easy aerobic effort · Practice sighting', checkable: true }
+      ]},
+      { date: 'Jun 23', dow: 'Tue', workouts: [
+        { type: 'swim', title: 'Vacation Pool Swim', detail: '800–1,000m · Cruise intervals: 4×200m with 30 sec rest', checkable: true },
+        { type: 'run',   title: 'Easy Run', detail: '25 min easy · Explore Italy on foot! Flat effort', checkable: true }
+      ]},
+      { date: 'Jun 24', dow: 'Wed', workouts: [
+        { type: 'swim', title: 'Vacation Pool Swim', detail: '800–1,000m · Continuous easy aerobic swim', checkable: true }
+      ]},
+      { date: 'Jun 25', dow: 'Thu', workouts: [
+        { type: 'swim', title: 'Vacation Pool Swim', detail: '800m–1,000m · Negative split: first half easy, second half faster', checkable: true },
+        { type: 'run',   title: 'Interval Run', detail: '5 min warm-up · 5× (90 sec fast / 90 sec easy) · 5 min cool-down', checkable: true }
+      ]},
+      { date: 'Jun 26', dow: 'Fri', workouts: [{ type: 'rest', title: 'Rest Day', detail: 'Active rest · Enjoy Italy! 🍕', checkable: false }]},
+      { date: 'Jun 27', dow: 'Sat', workouts: [
+        { type: 'run', title: 'Long Run', detail: '30 min easy long run · Stay in the shade, hydrate well', checkable: true }
+      ]},
+    ]
+  },
+
+  {
+    label: 'Week 4 – Italy (No Bike)', dates: 'Jun 28–Jul 4', badge: 'italy',
+    note: '🇮🇹 Bike returns July 4th. Swim + run through July 3.',
+    days: [
+      { date: 'Jun 28', dow: 'Sun', workouts: [{ type: 'rest', title: 'Rest Day', detail: 'Active rest · Gelato counts as carb-loading 🍦', checkable: false }]},
+      { date: 'Jun 29', dow: 'Mon', workouts: [
+        { type: 'swim', title: 'Vacation Pool Swim', detail: '1,000m · Main set: 2×400m with 1 min rest', checkable: true }
+      ]},
+      { date: 'Jun 30', dow: 'Tue', workouts: [
+        { type: 'swim', title: 'Vacation Pool Swim', detail: '1,000m · Cruise pace with bilateral breathing focus', checkable: true },
+        { type: 'run',   title: 'Easy Run', detail: '25–30 min easy run', checkable: true }
+      ]},
+      { date: 'Jul 1',  dow: 'Wed', workouts: [
+        { type: 'swim', title: 'Vacation Pool Swim', detail: '1,000–1,200m · Mixed paces: easy/moderate', checkable: true }
+      ]},
+      { date: 'Jul 2',  dow: 'Thu', workouts: [
+        { type: 'swim', title: 'Vacation Pool Swim', detail: '1,000m easy · Rest up for travel home', checkable: true },
+        { type: 'run',   title: 'Easy Run', detail: '20 min easy shakeout run', checkable: true }
+      ]},
+      { date: 'Jul 3',  dow: 'Fri', workouts: [{ type: 'rest', title: 'Travel Home', detail: 'Rest & travel · Arrive home from Italy', checkable: false }]},
+      { date: 'Jul 4',  dow: 'Sat', workouts: [
+        { type: 'bike',  title: 'Welcome Back Ride! 🎉', detail: '40 min easy spin · Get reacquainted with the bike · Cadence focus', checkable: true },
+        { type: 'run',   title: 'Brick Run', detail: '10 min easy run off the bike · Feel those legs!', checkable: true }
+      ]},
+    ]
+  },
+
+  {
+    label: 'Week 5 – Build Phase', dates: 'Jul 5–11', badge: 'build',
+    days: [
+      { date: 'Jul 5',  dow: 'Sun', workouts: [{ type: 'rest', title: 'Rest Day', detail: 'Recovery · Light stretching, sleep, hydrate', checkable: false }]},
+      { date: 'Jul 6',  dow: 'Mon', workouts: [
+        { type: 'swim', title: 'NSAC Coached Swim', detail: '~2,200–2,500 yds · Push main set intensity', checkable: true }
+      ]},
+      { date: 'Jul 7',  dow: 'Tue', workouts: [
+        { type: 'swim', title: 'NSAC Coached Swim', detail: '~2,200–2,500 yds · Open water / sighting practice if available', checkable: true },
+        { type: 'bike',  title: 'Bike + Brick Run', detail: '45 min moderate effort · Last 10 min at race pace · Immediately run 10 min at race effort', checkable: true }
+      ]},
+      { date: 'Jul 8',  dow: 'Wed', workouts: [
+        { type: 'swim', title: 'NSAC Coached Swim', detail: '~2,200–2,500 yds · Endurance sets', checkable: true }
+      ]},
+      { date: 'Jul 9',  dow: 'Thu', workouts: [
+        { type: 'swim', title: 'NSAC Coached Swim', detail: '~2,200–2,500 yds · Threshold sets', checkable: true },
+        { type: 'run',   title: 'Tempo Run', detail: '5 min warm-up · 20 min at comfortably hard effort · 5 min cool-down', checkable: true }
+      ]},
+      { date: 'Jul 10', dow: 'Fri', workouts: [
+        { type: 'bike',  title: 'Race Simulation Ride', detail: '50–55 min moderate-hard · Practice fueling & drinking on the bike', checkable: true }
+      ]},
+      { date: 'Jul 11', dow: 'Sat', workouts: [
+        { type: 'run',   title: 'Long Run', detail: '35 min easy (about 4 miles) · Keep effort conversational', checkable: true }
+      ]},
+    ]
+  },
+
+  {
+    label: 'Week 6 – Taper Week', dates: 'Jul 12–18', badge: 'taper',
+    days: [
+      { date: 'Jul 12', dow: 'Sun', workouts: [{ type: 'rest', title: 'Rest Day', detail: 'Full rest · Trust your training!', checkable: false }]},
+      { date: 'Jul 13', dow: 'Mon', workouts: [
+        { type: 'swim', title: 'NSAC Coached Swim', detail: '~1,800 yds easy · Smooth technique focus · No hard efforts', checkable: true }
+      ]},
+      { date: 'Jul 14', dow: 'Tue', workouts: [
+        { type: 'swim', title: 'NSAC Coached Swim', detail: '~1,600–1,800 yds · Easy with a few race-pace 50s', checkable: true },
+        { type: 'bike',  title: 'Easy Spin', detail: '25 min easy spin · Flat route, no hard efforts', checkable: true }
+      ]},
+      { date: 'Jul 15', dow: 'Wed', workouts: [
+        { type: 'swim', title: 'NSAC Coached Swim', detail: '~1,500 yds easy · Final technique polish', checkable: true }
+      ]},
+      { date: 'Jul 16', dow: 'Thu', workouts: [
+        { type: 'run', title: 'Short Shakeout Run', detail: '15 min easy jog · Feel fresh and loose', checkable: true }
+      ]},
+      { date: 'Jul 17', dow: 'Fri', workouts: [{ type: 'rest', title: 'Rest & Prep Day', detail: 'Lay out gear, check bike, pack transition bag, eat well, sleep early!', checkable: false }]},
+      { date: 'Jul 18', dow: 'Sat', isRace: true, workouts: [
+        { type: 'race', title: '🐢 Turtleman Triathlon!', detail: '800m swim → 12.5mi bike → 5K run · YOU\'VE GOT THIS!', checkable: true }
+      ]},
+    ]
+  }
+];
+
+// ─── STATE ──────────────────────────────────────────────────────────────────
+function loadState() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch(e) { return {}; }
+}
+function saveState(state) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+  catch(e) {}
+}
+
+let state = loadState();
+
+// ─── BUILD IDS ──────────────────────────────────────────────────────────────
+function workoutId(weekIdx, dayIdx, wIdx) {
+  return `w${weekIdx}-d${dayIdx}-w${wIdx}`;
+}
+
+// ─── ICONS ──────────────────────────────────────────────────────────────────
+const ICONS = { swim: '🏊', bike: '🚴', run: '🏃', rest: '💤', trip: '✈️', race: '🏁' };
+const TAGS  = { swim: 'tag-swim', bike: 'tag-bike', run: 'tag-run', rest: 'tag-rest', race: 'tag-race' };
+const TAGNAMES = { swim: 'Swim', bike: 'Bike', run: 'Run', rest: 'Rest', race: 'Race' };
+
+// ─── COUNT TOTALS ────────────────────────────────────────────────────────────
+let totalCheckable = 0;
+weeks.forEach((week, wi) => {
+  week.days.forEach((day, di) => {
+    day.workouts.forEach((w, wIdx) => {
+      if (w.checkable) totalCheckable++;
+    });
+  });
+});
+
+// ─── RENDER ─────────────────────────────────────────────────────────────────
+function renderPlan() {
+  const container = document.getElementById('plan');
+  let html = '';
+
+  weeks.forEach((week, wi) => {
+    const badgeMap = { build: 'badge-build', trip: 'badge-trip', italy: 'badge-italy', taper: 'badge-taper', race: 'badge-race' };
+    const badgeLabel = { build: '💪 Build', trip: '✈️ Travel', italy: '🇮🇹 Italy', taper: '⚡ Taper', race: '🏁 Race Day' };
+
+    html += `<div class="week-block">
+      <div class="week-header">
+        <span class="week-label">${week.label}</span>
+        <span class="week-dates">${week.dates}</span>
+        <span class="week-badge ${badgeMap[week.badge]}">${badgeLabel[week.badge]}</span>
+      </div>`;
+
+    if (week.note) {
+      html += `<div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:10px;padding:8px 12px;background:var(--gray-50);border-radius:var(--radius-sm);border-left:3px solid var(--gray-100);">${week.note}</div>`;
+    }
+
+    html += `<div class="days-grid">`;
+
+    week.days.forEach((day, di) => {
+      const isRest = day.workouts.every(w => w.type === 'rest');
+      const isTrip = week.badge === 'trip';
+      const isItalyRest = week.badge === 'italy' && isRest;
+      const isRaceDay = day.isRace;
+
+      // Check if ALL checkable workouts for this day are done
+      const checkableWorkouts = day.workouts.filter(w => w.checkable);
+      const allChecked = checkableWorkouts.length > 0 && checkableWorkouts.every((w, wIdx) => {
+        const id = workoutId(wi, di, day.workouts.indexOf(w));
+        return !!state[id];
+      });
+
+      let cardClass = 'day-card';
+      if (isRaceDay) cardClass += ' race-day';
+      else if (isTrip && isRest) cardClass += ' trip-day';
+      else if (isRest) cardClass += ' rest';
+      if (allChecked) cardClass += ' completed';
+
+      const [month, dayNum] = day.date.split(' ');
+
+      html += `<div class="${cardClass}" id="card-${wi}-${di}">
+        <div class="day-inner">
+          <div class="day-date-col">
+            <div class="day-name">${day.dow}</div>
+            <div class="day-num">${dayNum}</div>
+            <div class="day-month">${month}</div>
+          </div>
+          <div class="day-content">`;
+
+      day.workouts.forEach((w, wIdx) => {
+        const id = workoutId(wi, di, wIdx);
+        const checked = !!state[id];
+        const tagClass = TAGS[w.type] || 'tag-rest';
+        const tagName = TAGNAMES[w.type] || '';
+
+        html += `<div class="workout-row">
+          <div class="sport-icon" aria-hidden="true">${ICONS[w.type] || '📋'}</div>
+          <div class="workout-text">
+            ${isRaceDay ? `<div class="race-title">${w.title}</div>` : `<div class="workout-title"><span class="sport-tag ${tagClass}">${tagName}</span>${w.type !== 'rest' ? w.title : ''}</div>`}
+            <div class="workout-detail">${w.detail}</div>
+          </div>`;
+
+        if (w.checkable) {
+          html += `<button class="check-btn${checked ? ' checked' : ''}" 
+            onclick="toggleWorkout('${id}', ${wi}, ${di}, this)"
+            aria-label="${checked ? 'Mark incomplete' : 'Mark complete'}: ${w.title}">
+            <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+          </button>`;
+        }
+
+        html += `</div>`;
+      });
+
+      html += `</div></div></div>`;
+    });
+
+    html += `</div></div>`;
+  });
+
+  container.innerHTML = html;
+  updateProgress();
+}
+
+function toggleWorkout(id, wi, di, btn) {
+  state[id] = !state[id];
+  saveState(state);
+
+  const checked = state[id];
+  btn.classList.toggle('checked', checked);
+  btn.classList.add('just-checked');
+  setTimeout(() => btn.classList.remove('just-checked'), 300);
+  btn.setAttribute('aria-label', (checked ? 'Mark incomplete' : 'Mark complete') + ': workout');
+
+  // Update card bg
+  const card = document.getElementById(`card-${wi}-${di}`);
+  if (card) {
+    const week = weeks[wi];
+    const day = week.days[di];
+    const checkableWorkouts = day.workouts.filter(w => w.checkable);
+    const allChecked = checkableWorkouts.every((w, wIdx) => {
+      const wid = workoutId(wi, di, day.workouts.indexOf(w));
+      return !!state[wid];
+    });
+    card.classList.toggle('completed', allChecked);
+  }
+
+  updateProgress();
+}
+
+function updateProgress() {
+  let done = 0;
+  weeks.forEach((week, wi) => {
+    week.days.forEach((day, di) => {
+      day.workouts.forEach((w, wIdx) => {
+        if (w.checkable) {
+          const id = workoutId(wi, di, wIdx);
+          if (state[id]) done++;
+        }
+      });
+    });
+  });
+
+  const pct = totalCheckable > 0 ? Math.round((done / totalCheckable) * 100) : 0;
+  document.getElementById('progress-text').textContent = `${done} / ${totalCheckable}`;
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+renderPlan();
+</script>
+</body>
+</html>
